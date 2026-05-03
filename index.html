@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WDLAB-LLMOps · Self-Hosted LLMOps Platform</title>
+<meta name="description" content="WDLAB-LLMOps는 LLM과 AI Agent 응용 시스템의 관측·평가·최적화·가드레일·투명성을 하나의 계층으로 통합한 자체 호스팅형 LLMOps 플랫폼입니다." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ============== SIDEBAR ============== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-logo neu-pressed">
+        <span class="led led-blue"></span>
+        <span class="led led-pink"></span>
+      </div>
+      <div class="brand-text">
+        <div class="brand-title">WDLAB</div>
+        <div class="brand-subtitle">LLMOps v1.3.1</div>
+      </div>
+    </div>
+
+    <nav class="nav-sections">
+      <div class="nav-group">
+        <div class="nav-label">시작</div>
+        <a class="nav-item active" href="#hero" data-target="hero"><i class="dot"></i><span>홈 · 개요</span></a>
+        <a class="nav-item" href="#projects" data-target="projects"><i class="dot"></i><span>Projects</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Observability</div>
+        <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>Dashboards</span></a>
+        <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>Logs · Traces</span></a>
+        <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>Trace Detail</span></a>
+        <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>Threads View</span></a>
+        <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>DAG Flow</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Development</div>
+        <a class="nav-item" href="#development" data-target="development"><i class="dot dot-pink"></i><span>Agent Playground</span></a>
+        <a class="nav-item" href="#development" data-target="development"><i class="dot dot-pink"></i><span>Prompt Playground</span></a>
+        <a class="nav-item" href="#development" data-target="development"><i class="dot dot-pink"></i><span>Agent Configuration</span></a>
+        <a class="nav-item" href="#development" data-target="development"><i class="dot dot-pink"></i><span>Optimization Runs</span></a>
+        <a class="nav-item" href="#development" data-target="development"><i class="dot dot-pink"></i><span>Prompts</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Evaluation</div>
+        <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Test Suites</span></a>
+        <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Datasets</span></a>
+        <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Experiments</span></a>
+        <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Annotation Queues</span></a>
+        <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Evaluations</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Production</div>
+        <a class="nav-item" href="#production" data-target="production"><i class="dot dot-pink"></i><span>Online Evaluation</span></a>
+        <a class="nav-item" href="#production" data-target="production"><i class="dot dot-pink"></i><span>Alerts</span></a>
+        <a class="nav-item" href="#production" data-target="production"><i class="dot dot-pink"></i><span>Guardrails</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Compliance · AI 기본법</div>
+        <a class="nav-item" href="#compliance" data-target="compliance"><i class="dot dot-blue"></i><span>Ontology</span></a>
+        <a class="nav-item" href="#compliance" data-target="compliance"><i class="dot dot-blue"></i><span>Transparency</span></a>
+        <a class="nav-item" href="#compliance" data-target="compliance"><i class="dot dot-blue"></i><span>Auditor</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">System</div>
+        <a class="nav-item" href="#system" data-target="system"><i class="dot"></i><span>Settings</span></a>
+        <a class="nav-item" href="#architecture" data-target="architecture"><i class="dot"></i><span>Architecture</span></a>
+        <a class="nav-item" href="#roadmap" data-target="roadmap"><i class="dot"></i><span>Roadmap</span></a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer neu-pressed">
+      <div class="status-led"><span class="pulse"></span> 100% Local · On-Prem</div>
+    </div>
+  </aside>
+
+  <!-- ============== MAIN ============== -->
+  <main class="content">
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="section section-hero">
+      <div class="hero-meta">
+        <span class="chip neu-pressed">Self-Hosted</span>
+        <span class="chip neu-pressed">AI 기본법 §31·§34 대응</span>
+        <span class="chip neu-pressed">v1.3.1 · 2026.04</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="text-gradient-blue">WDLAB</span><span class="text-gradient-pink">-LLMOps</span>
+      </h1>
+      <p class="hero-tagline">
+        LLM과 AI Agent 응용 시스템의 <b>관측 · 평가 · 최적화 · 가드레일 · 투명성</b>을<br/>
+        하나의 계층으로 통합한 <b>자체 호스팅형 LLMOps 플랫폼</b>
+      </p>
+
+      <div class="hero-cta">
+        <button class="btn-neu btn-primary" onclick="document.getElementById('pillars').scrollIntoView({behavior:'smooth'})">
+          <span>5대 핵심 축 살펴보기</span>
+        </button>
+        <button class="btn-neu" onclick="document.getElementById('architecture').scrollIntoView({behavior:'smooth'})">
+          <span>시스템 아키텍처</span>
+        </button>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-blue">73</div>
+          <div class="stat-label">FastAPI Routes</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-pink">22</div>
+          <div class="stat-label">Workspace Screens</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-blue">39</div>
+          <div class="stat-label">Agent Frameworks</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-pink">18</div>
+          <div class="stat-label">Eval Metrics</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-blue">6</div>
+          <div class="stat-label">Optimizers</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-pink">7</div>
+          <div class="stat-label">Korean Guardrails</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS / IDENTITY ===== -->
+    <section id="projects" class="section">
+      <div class="section-head">
+        <span class="section-tag">Identity</span>
+        <h2>왜 <span class="text-blue">WDLAB-LLMOps</span> 인가?</h2>
+        <p class="section-lead">
+          Cloud SaaS LLMOps의 종속성을 끊고, <b>데이터 주권 · 규제 준수 · 멀티 에이전트 가시성</b>을
+          단일 자체 호스팅 플랫폼으로 통합합니다.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-blue">⌘</span></div>
+          <h3>완전한 데이터 주권</h3>
+          <p>모든 트레이스 · 평가 · 감사 로그가 온프레미스에 저장. 외부 SaaS 전송 0건. <b>ALLOW_EXTERNAL_LLM=false</b>가 기본값.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-pink">⚖</span></div>
+          <h3>AI 기본법 자동 준수</h3>
+          <p>제31조 ① ② (고지·공개), 제34조 ① ② ④ (영향평가·결정근거·이의제기) 증거를 자동 누적, 월간 컴플라이언스 리포트(MD/DOCX/PDF) 생성.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-blue">⊞</span></div>
+          <h3>멀티 에이전트 네이티브</h3>
+          <p>LangGraph · CrewAI · AutoGen 등 <b>39개 프레임워크</b>를 Maestro 5계층 DAG로 표준화 추적.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-pink">◈</span></div>
+          <h3>Zero-Cost 로컬 추론</h3>
+          <p>Ollama · vLLM 기반 gemma3 / qwen3 / llama3.2 로컬 모델로 운영. 외부 LLM 호출 자동 차단(prefix block).</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-blue">▣</span></div>
+          <h3>WORM + Merkle 무결성</h3>
+          <p>컴플라이언스 감사 · 가드레일 · 온톨로지 이벤트를 Append-only + HMAC-SHA256 체인으로 봉인. 변조 시 즉시 탐지.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-pink">◐</span></div>
+          <h3>XAI 5계층 설명</h3>
+          <p>Raw → Feature → Natural Language → Visual → Actionable. <code>/explain</code> API로 규제 기관에 결정 근거 제공.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5 PILLARS ===== -->
+    <section id="pillars" class="section">
+      <div class="section-head">
+        <span class="section-tag">Core Pillars</span>
+        <h2>플랫폼을 떠받치는 <span class="text-pink">5대 축</span></h2>
+        <p class="section-lead">단일 SDK · 단일 UI · 단일 감사 체인. 다섯 영역이 끊김 없이 연결됩니다.</p>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar neu-raised">
+          <div class="pillar-num neu-pressed">01</div>
+          <h3 class="pillar-title text-blue">Observability</h3>
+          <div class="pillar-tags">
+            <span>Maestro DAG 5-Layer</span><span>Gantt</span><span>WebSocket Stream</span>
+          </div>
+          <p>Dispatch → Worker → Merge → Final Inference → Audit. 24h×7d 토큰 히트맵, 실시간 토큰 스트리밍, 스레드 대화 뷰.</p>
+        </div>
+
+        <div class="pillar neu-raised">
+          <div class="pillar-num neu-pressed">02</div>
+          <h3 class="pillar-title text-pink">Evaluation</h3>
+          <div class="pillar-tags">
+            <span>18 Metrics</span><span>LLM-as-Judge</span><span>A/B Diff</span>
+          </div>
+          <p>Heuristic 9 · LLM-Judge 7 · Korean 2. 불변(sha256) 데이터셋 스냅샷 · 회귀 탐지 · 샘플 단위 드릴다운.</p>
+        </div>
+
+        <div class="pillar neu-raised">
+          <div class="pillar-num neu-pressed">03</div>
+          <h3 class="pillar-title text-blue">Optimization</h3>
+          <div class="pillar-tags">
+            <span>GEPA</span><span>MetaPrompt</span><span>HRPO</span><span>Pareto</span>
+          </div>
+          <p>6종 옵티마이저, Pareto Frontier · Evolution Tree 시각화, 평가 결과를 시드로 다시 투입하는 Closed-Loop 피드백.</p>
+        </div>
+
+        <div class="pillar neu-raised">
+          <div class="pillar-num neu-pressed">04</div>
+          <h3 class="pillar-title text-pink">Guardrails</h3>
+          <div class="pillar-tags">
+            <span>Korean PII</span><span>Prompt Injection</span><span>Exfiltration</span>
+          </div>
+          <p>주민등록번호 · 카드번호 · 계좌번호 등 9종 KoreanPII, EN/KO 15패턴 인젝션 차단, AWS/OpenAI/GitHub 키 유출 탐지.</p>
+        </div>
+
+        <div class="pillar neu-raised pillar-wide">
+          <div class="pillar-num neu-pressed">05</div>
+          <h3 class="pillar-title text-blue">Transparency</h3>
+          <div class="pillar-tags">
+            <span>AI 기본법 §31·§34</span><span>WORM Ledger</span><span>Decision Basis</span><span>Monthly Report</span>
+          </div>
+          <p>고지·공개·영향평가·결정근거·이의제기를 7-탭 대시보드로 통합. 감사관 전용 Auditor 뷰에서 머클 체인 무결성 검증 및 PDF/DOCX 결정근거 내보내기.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== OBSERVABILITY DETAIL ===== -->
+    <section id="observability" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · Observability</span>
+        <h2><span class="text-blue">관측</span>의 5가지 시야</h2>
+      </div>
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📊</span><h4>Dashboards</h4></div>
+          <p>Cost · Latency · Errors · Feedback Score 시계열. 샘플 분포 히트맵, 자동 새로고침 토글.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📋</span><h4>Logs · Traces</h4></div>
+          <p>실시간 트레이스 타임라인 테이블. 프로젝트 · 모델 · 프레임워크 필터, 상세로 딥링크.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🔬</span><h4>Trace Detail</h4></div>
+          <p>Gantt 타임라인 + Span 트리 + 토큰 어텐션 히트맵. /explain XAI 5계층 응답.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">💬</span><h4>Threads View</h4></div>
+          <p>thread_id 기준 대화 버블. 누적 비용/지연/평가점수, 사용자 피드백 인라인.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🔗</span><h4>DAG Flow</h4></div>
+          <p>Maestro Dispatch → Worker Agents → Merge. WebSocket 라이브 업데이트로 실행 중 그래프가 자라는 모습 관찰.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DEVELOPMENT DETAIL ===== -->
+    <section id="development" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · Development</span>
+        <h2><span class="text-pink">개발</span> 사이클을 한 화면에서</h2>
+      </div>
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🤖</span><h4>Agent Playground</h4></div>
+          <p>멀티 모델 채팅, 대화 히스토리, 비용 추적, 프롬프트 인젝션 사전 미리보기.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">✨</span><h4>Prompt Playground</h4></div>
+          <p>여러 모델 동시 비교, 변수 렌더링, 비용/지연 오버레이.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">⚙</span><h4>Agent Configuration</h4></div>
+          <p>정적 스캔(프레임워크/모델/패턴) + 런타임 관측(실제 사용 도구/LLM)을 한 페이지에 결합.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧬</span><h4>Optimization Runs</h4></div>
+          <p>GEPA/MetaPrompt 결과 Pareto · Evolution Tree, 변이 영향, 프롬프트로 1-Click 적용.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📝</span><h4>Prompts</h4></div>
+          <p>버전 관리 · 템플릿 렌더링 · 메타데이터 · 계보 추적 · 배치 작업.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EVALUATION DETAIL ===== -->
+    <section id="evaluation" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · Evaluation</span>
+        <h2><span class="text-blue">평가</span>는 모든 결정의 근거</h2>
+      </div>
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">✅</span><h4>Test Suites</h4></div>
+          <p>회귀 테스트 18 metric. 스위트별 Pass/Fail 비율, CI/CD 연동 시 PR 자동 게이트.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🗃</span><h4>Datasets</h4></div>
+          <p>SHA256 자동 계산 불변 스냅샷, CSV/JSONL 업로드, Freeze · Archive 워크플로.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧪</span><h4>Experiments</h4></div>
+          <p>Baseline vs Candidate A/B, metric 델타, 샘플 단위 드릴다운, metric × variant 매트릭스.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">👁</span><h4>Annotation Queues</h4></div>
+          <p>Human-in-the-Loop 피드백, 5% 트레이스 샘플링으로 편향 완화, 큐 진척도 표시.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📐</span><h4>Evaluations</h4></div>
+          <p>Heuristic 9 / LLM-Judge 7 / Korean 2 / Ontology 1 = <b>총 18 metrics</b>. 커스텀 metric 등록 가능.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRODUCTION DETAIL ===== -->
+    <section id="production" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · Production</span>
+        <h2><span class="text-pink">실시간 운영</span>의 안전선</h2>
+      </div>
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📡</span><h4>Online Evaluation</h4></div>
+          <p>Redis Streams 컨슈머 그룹 기반 실시간 metric 트리거. 임계값 위반 이력, 웹훅 액션.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🔔</span><h4>Alerts</h4></div>
+          <p>Slack · Telegram · 커스텀 웹훅 라우팅, Test Fire, SLA 추적.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🛡</span><h4>Guardrails</h4></div>
+          <p>Rule CRUD · Live Preview · 24h Block/Rewrite/Flag 대시보드 · 법조항 매핑.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPLIANCE DETAIL ===== -->
+    <section id="compliance" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · Compliance</span>
+        <h2><span class="text-blue">AI 기본법</span> 자동화 컴플라이언스</h2>
+        <p class="section-lead">제31조 (고지·공개) · 제34조 (영향평가·결정근거·이의제기) 증거가 트레이스마다 자동 축적됩니다.</p>
+      </div>
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧠</span><h4>Ontology</h4></div>
+          <p>엔터티 추출, SHACL/SPARQL/Cypher 검증 룰, 환각(hallucination) 사전 차단, WORM 이벤트 적재.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📜</span><h4>Transparency</h4></div>
+          <p>7-Tab 대시보드 (체크리스트 · 결정근거 · 책임자 · 영향평가 · 공개창구 · 24h 액션 · 위반 요약).</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🔍</span><h4>Auditor</h4></div>
+          <p>Merkle Chain 뷰어, 컴플라이언스 감사 추적, 결정근거 PDF/DOCX 내보내기.</p>
+        </div>
+      </div>
+
+      <div class="law-banner neu-raised">
+        <div class="law-row">
+          <div class="law-cell">
+            <div class="law-tag">제31조 ①</div>
+            <div class="law-desc">고위험 AI 사실 고지 — 사용자 화면에 자동 배너 노출 + 감사 로그</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">제31조 ②</div>
+            <div class="law-desc">학습데이터/모델/리스크 공개 — Public Transparency 엔드포인트</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">제34조 ①</div>
+            <div class="law-desc">영향평가 등록 — ai_act_registrations 테이블 자동 연동</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">제34조 ②</div>
+            <div class="law-desc">결정근거 설명 — XAI 5계층 /explain API 응답</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">제34조 ④</div>
+            <div class="law-desc">이의제기 절차 — Annotation Queue + Auditor 워크플로</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ARCHITECTURE ===== -->
+    <section id="architecture" class="section">
+      <div class="section-head">
+        <span class="section-tag">System</span>
+        <h2><span class="text-pink">시스템</span> 아키텍처</h2>
+        <p class="section-lead">FastAPI + ClickHouse + PostgreSQL + Redis + MinIO + Ollama. 모두 컨테이너로 자체 호스팅.</p>
+      </div>
+
+      <div class="arch">
+        <div class="arch-layer neu-raised">
+          <div class="arch-layer-title">Frontend</div>
+          <div class="arch-blocks">
+            <div class="arch-block">React + TypeScript</div>
+            <div class="arch-block">22 Workspace Screens</div>
+            <div class="arch-block">i18n ko/en</div>
+            <div class="arch-block">WebSocket Live</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-layer neu-raised arch-accent-blue">
+          <div class="arch-layer-title">FastAPI Backend · 73 Routes</div>
+          <div class="arch-blocks">
+            <div class="arch-block">Ingestion (OTLP + Batch)</div>
+            <div class="arch-block">Evaluation Runner</div>
+            <div class="arch-block">Optimizer Engine</div>
+            <div class="arch-block">Guardrails Processor</div>
+            <div class="arch-block">XAI Explain</div>
+            <div class="arch-block">Compliance Auditor</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-grid">
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-blue">ClickHouse</div>
+            <div class="arch-cell-sub">Traces · Spans · Feedback · Guardrail · Audit (WORM + Merkle)</div>
+          </div>
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-pink">PostgreSQL</div>
+            <div class="arch-cell-sub">Projects · Datasets · Experiments · Prompts · AI Act Registrations</div>
+          </div>
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-blue">Redis Streams</div>
+            <div class="arch-cell-sub">Online Eval Worker · Rate Limit · WS Pub/Sub</div>
+          </div>
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-pink">MinIO</div>
+            <div class="arch-cell-sub">Backups · Ontology Files · Model Cards</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-layer neu-raised arch-accent-pink">
+          <div class="arch-layer-title">Inference · Local Only</div>
+          <div class="arch-blocks">
+            <div class="arch-block">Ollama (gemma3:4b · qwen3 · llama3.2)</div>
+            <div class="arch-block">vLLM</div>
+            <div class="arch-block">LiteLLM Proxy :14000</div>
+            <div class="arch-block">External LLM prefix block (gpt-, claude-, azure/)</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-layer neu-raised">
+          <div class="arch-layer-title">Observability Stack</div>
+          <div class="arch-blocks">
+            <div class="arch-block">Prometheus</div>
+            <div class="arch-block">Grafana · 6 Dashboards</div>
+            <div class="arch-block">OpenTelemetry</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DIFFERENTIATORS ===== -->
+    <section id="diff" class="section">
+      <div class="section-head">
+        <span class="section-tag">Comparison</span>
+        <h2>왜 <span class="text-blue">Opik · Langfuse</span> 가 아니라 <span class="text-pink">WDLAB-LLMOps</span> 인가</h2>
+      </div>
+
+      <div class="compare neu-raised">
+        <div class="compare-row compare-head">
+          <div>차원</div>
+          <div>WDLAB-LLMOps</div>
+          <div>Opik / Langfuse</div>
+        </div>
+        <div class="compare-row">
+          <div>호스팅 모델</div>
+          <div class="hi">100% On-Prem · External LLM 차단 기본값</div>
+          <div class="lo">SaaS 또는 Cloud Hybrid</div>
+        </div>
+        <div class="compare-row">
+          <div>Trace 표준</div>
+          <div class="hi">Maestro 5계층 DAG 표준화</div>
+          <div class="lo">Flat span nesting</div>
+        </div>
+        <div class="compare-row">
+          <div>프레임워크 어댑터</div>
+          <div class="hi">39종 (Tier A~D 분류)</div>
+          <div class="lo">10~20종 (cloud SDK 의존)</div>
+        </div>
+        <div class="compare-row">
+          <div>한국어 가드레일</div>
+          <div class="hi">7종 · 주민번호/카드/계좌 등 9패턴</div>
+          <div class="lo">미지원 또는 영어 일부</div>
+        </div>
+        <div class="compare-row">
+          <div>AI 기본법 컴플라이언스</div>
+          <div class="hi">월간 리포트 자동 생성 · WORM Merkle</div>
+          <div class="lo">없음</div>
+        </div>
+        <div class="compare-row">
+          <div>옵티마이저</div>
+          <div class="hi">GEPA · MetaPrompt · HRPO 등 6종</div>
+          <div class="lo">제한적 또는 외부 의존</div>
+        </div>
+        <div class="compare-row">
+          <div>XAI Explain Layer</div>
+          <div class="hi">5계층 표준 응답 (/explain)</div>
+          <div class="lo">없음</div>
+        </div>
+        <div class="compare-row">
+          <div>외부 의존성</div>
+          <div class="hi">0 (코어 트레이싱 기준)</div>
+          <div class="lo">필수 SaaS 또는 cloud sink</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ROADMAP ===== -->
+    <section id="roadmap" class="section">
+      <div class="section-head">
+        <span class="section-tag">Roadmap</span>
+        <h2>버전 <span class="text-pink">진화의 단계</span></h2>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">v0.x</div>
+          <h4>Bootstrap</h4>
+          <p>기본 트레이싱, 평가 엔진, 단일 옵티마이저 시드</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">v1.0.0</div>
+          <h4>Production Release</h4>
+          <p>22개 워크스페이스 · 73 API · 117 테스트 통과</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">v1.2.0</div>
+          <h4>Phase V · Visual / XAI</h4>
+          <p>Gantt · Pareto · Evolution Tree · Token Heatmap · Merkle Viewer</p>
+        </div>
+        <div class="tl-item neu-raised pulse-card">
+          <div class="tl-tag tl-current">v1.3.1 · NOW</div>
+          <h4>Opik 호환 · Auto-Bootstrap</h4>
+          <p>폴더 스캔 위저드, .wdlab/ 자동 생성, OPENAI_API_BASE 자동 재작성</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">Phase 13~24</div>
+          <h4>Future</h4>
+          <p>End-to-End Replay · 통계적 A/B 유의성 · Vision Guardrails · Distributed Maestro · TS/Java SDK · IDE Plugins · RTBF 워크플로</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SYSTEM / SETTINGS ===== -->
+    <section id="system" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · System</span>
+        <h2><span class="text-blue">Settings</span> · 워크스페이스 운영</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card neu-raised">
+          <h3>API Key 관리</h3>
+          <p>프로젝트별 키 발급/회수, IP 화이트리스트, 만료 정책.</p>
+        </div>
+        <div class="card neu-raised">
+          <h3>다국어 (i18n)</h3>
+          <p>한국어 기본, 영어 토글. 자체 경량 i18n 모듈로 의존성 최소화.</p>
+        </div>
+        <div class="card neu-raised">
+          <h3>모델 레지스트리</h3>
+          <p>Ollama/vLLM 등록, 외부 LLM 차단 정책, 승인 워크플로 감사 로그.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer neu-pressed">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="brand-logo neu-raised small">
+            <span class="led led-blue"></span>
+            <span class="led led-pink"></span>
+          </div>
+          <div>
+            <div class="brand-title">WDLAB-LLMOps</div>
+            <div class="brand-subtitle">Self-Hosted · Sovereign · Compliant</div>
+          </div>
+        </div>
+        <div class="footer-meta">
+          <div>v1.3.1 · 2026.04.26</div>
+          <div>© WDLAB · Built for AI 기본법 era</div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <button id="toTop" class="to-top neu-raised" aria-label="Top">▲</button>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
