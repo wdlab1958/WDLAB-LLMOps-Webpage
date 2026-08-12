@@ -4,13 +4,18 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>WDLAB-LLMOps · Self-Hosted LLMOps Platform</title>
-<meta name="description" content="WDLAB-LLMOps는 LLM과 AI Agent 응용 시스템의 관측·평가·최적화·가드레일·투명성을 하나의 계층으로 통합한 자체 호스팅형 LLMOps 플랫폼입니다." />
+<meta name="description" content="WDLAB-LLMOps는 LLM과 AI Agent 응용 시스템의 관측·평가·최적화·가드레일·투명성을 하나의 계층으로 통합한 자체 호스팅형 Open Core LLMOps 플랫폼입니다. AI 기본법 컴플라이언스 · 엔터프라이즈 IAM · 3티어 에디션." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <button id="menuToggle" class="menu-toggle" aria-label="메뉴 열기">
+    <span></span><span></span><span></span>
+  </button>
+  <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
   <!-- ============== SIDEBAR ============== -->
   <aside class="sidebar" id="sidebar">
     <div class="brand">
@@ -20,7 +25,7 @@
       </div>
       <div class="brand-text">
         <div class="brand-title">WDLAB</div>
-        <div class="brand-subtitle">LLMOps v1.4</div>
+        <div class="brand-subtitle">LLMOps v2.0 Open Core</div>
       </div>
     </div>
 
@@ -28,6 +33,7 @@
       <div class="nav-group">
         <div class="nav-label">시작</div>
         <a class="nav-item active" href="#hero" data-target="hero"><i class="dot"></i><span>홈 · 개요</span></a>
+        <a class="nav-item" href="#gateway" data-target="gateway"><i class="dot dot-blue"></i><span>플랫폼 접속 · Quick Start</span></a>
         <a class="nav-item" href="#projects" data-target="projects"><i class="dot"></i><span>Projects</span></a>
       </div>
 
@@ -38,6 +44,7 @@
         <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>Trace Detail</span></a>
         <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>Threads View</span></a>
         <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>DAG Flow</span></a>
+        <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>End-to-End Flow</span></a>
       </div>
 
       <div class="nav-group">
@@ -55,7 +62,7 @@
         <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Datasets</span></a>
         <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Experiments</span></a>
         <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Annotation Queues</span></a>
-        <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Evaluations</span></a>
+        <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Metrics Catalog</span></a>
       </div>
 
       <div class="nav-group">
@@ -66,17 +73,24 @@
       </div>
 
       <div class="nav-group">
+        <div class="nav-label">Diagnosis · EE</div>
+        <a class="nav-item" href="#enterprise" data-target="enterprise"><i class="dot dot-pink"></i><span>Diagnosis 진단 엔진</span></a>
+      </div>
+
+      <div class="nav-group">
         <div class="nav-label">Compliance · AI 기본법</div>
         <a class="nav-item" href="#compliance" data-target="compliance"><i class="dot dot-blue"></i><span>Ontology</span></a>
         <a class="nav-item" href="#compliance" data-target="compliance"><i class="dot dot-blue"></i><span>Transparency</span></a>
         <a class="nav-item" href="#compliance" data-target="compliance"><i class="dot dot-blue"></i><span>Auditor</span></a>
+        <a class="nav-item" href="#compliance" data-target="compliance"><i class="dot dot-blue"></i><span>Platform Audit</span></a>
       </div>
 
       <div class="nav-group">
-        <div class="nav-label">Phase Upgrades · v1.4</div>
-        <a class="nav-item" href="#upgrades" data-target="upgrades"><i class="dot dot-pink"></i><span>신규 역량 (13~24)</span></a>
-        <a class="nav-item" href="#upgrades" data-target="upgrades"><i class="dot dot-pink"></i><span>TS · Java SDK</span></a>
-        <a class="nav-item" href="#upgrades" data-target="upgrades"><i class="dot dot-pink"></i><span>IDE Plugins</span></a>
+        <div class="nav-label">Platform Evolution</div>
+        <a class="nav-item" href="#upgrades" data-target="upgrades"><i class="dot dot-pink"></i><span>v1.4 · Phase 13~24</span></a>
+        <a class="nav-item" href="#ops14x" data-target="ops14x"><i class="dot dot-pink"></i><span>v1.4.x 운영 강화</span></a>
+        <a class="nav-item" href="#enterprise" data-target="enterprise"><i class="dot dot-pink"></i><span>v2.0 Open Core (21~30)</span></a>
+        <a class="nav-item" href="#pricing" data-target="pricing"><i class="dot dot-pink"></i><span>에디션 · 요금제</span></a>
       </div>
 
       <div class="nav-group">
@@ -98,9 +112,9 @@
     <!-- ===== HERO ===== -->
     <section id="hero" class="section section-hero">
       <div class="hero-meta">
-        <span class="chip neu-pressed">Self-Hosted</span>
+        <span class="chip neu-pressed">Self-Hosted · Open Core</span>
         <span class="chip neu-pressed">AI 기본법 §31·§34 대응</span>
-        <span class="chip neu-pressed">v1.4 · Phase 13~24 · 2026.06</span>
+        <span class="chip neu-pressed">v2.0.0-dev · Phase 21~30 진행 중 · 2026.08</span>
       </div>
 
       <h1 class="hero-title">
@@ -112,7 +126,10 @@
       </p>
 
       <div class="hero-cta">
-        <button class="btn-neu btn-primary" onclick="document.getElementById('pillars').scrollIntoView({behavior:'smooth'})">
+        <button class="btn-neu btn-primary" onclick="document.getElementById('gateway').scrollIntoView({behavior:'smooth'})">
+          <span>지금 시작하기 →</span>
+        </button>
+        <button class="btn-neu" onclick="document.getElementById('pillars').scrollIntoView({behavior:'smooth'})">
           <span>5대 핵심 축 살펴보기</span>
         </button>
         <button class="btn-neu" onclick="document.getElementById('architecture').scrollIntoView({behavior:'smooth'})">
@@ -122,19 +139,19 @@
 
       <div class="hero-stats">
         <div class="stat-card neu-raised">
-          <div class="stat-number text-blue">73</div>
-          <div class="stat-label">FastAPI Routes</div>
+          <div class="stat-number text-blue">192</div>
+          <div class="stat-label">API Paths (EE)</div>
         </div>
         <div class="stat-card neu-raised">
-          <div class="stat-number text-pink">22</div>
-          <div class="stat-label">Workspace Screens</div>
+          <div class="stat-number text-pink">26</div>
+          <div class="stat-label">Workspace Menus</div>
         </div>
         <div class="stat-card neu-raised">
           <div class="stat-number text-blue">39</div>
           <div class="stat-label">Agent Frameworks</div>
         </div>
         <div class="stat-card neu-raised">
-          <div class="stat-number text-pink">18</div>
+          <div class="stat-number text-pink">19</div>
           <div class="stat-label">Eval Metrics</div>
         </div>
         <div class="stat-card neu-raised">
@@ -142,7 +159,7 @@
           <div class="stat-label">Optimizers</div>
         </div>
         <div class="stat-card neu-raised">
-          <div class="stat-number text-pink">7</div>
+          <div class="stat-number text-pink">8</div>
           <div class="stat-label">Korean Guardrails</div>
         </div>
         <div class="stat-card neu-raised">
@@ -152,6 +169,79 @@
         <div class="stat-card neu-raised">
           <div class="stat-number text-pink">2</div>
           <div class="stat-label">IDE Plugins</div>
+        </div>
+      </div>
+
+      <div class="hero-proof">
+        <span class="chip neu-pressed">✅ E2E 17/17 PASS</span>
+        <span class="chip neu-pressed">🤖 Agent Test 10/10 PASS</span>
+        <span class="chip neu-pressed">🧪 단위 테스트 111건</span>
+        <span class="chip neu-pressed">📊 A/B 실측 p&lt;0.05 유의차 3개 메트릭 검출</span>
+      </div>
+    </section>
+
+    <!-- ===== GATEWAY / QUICK ACCESS ===== -->
+    <section id="gateway" class="section">
+      <div class="section-head">
+        <span class="section-tag">Gateway</span>
+        <h2>플랫폼으로 <span class="text-blue">바로 들어가기</span></h2>
+        <p class="section-lead">
+          WDLAB-LLMOps는 자체 호스팅 플랫폼입니다. 아래 진입점에서 실행 중인 인스턴스로 접속하거나,
+          5분 안에 새 인스턴스를 기동할 수 있습니다.
+        </p>
+      </div>
+
+      <div class="gateway-grid">
+        <a class="gw-card neu-raised card-hover" href="http://localhost:18090/" target="_blank" rel="noopener">
+          <div class="gw-icon neu-pressed"><span class="ico-blue">🖥</span></div>
+          <h3>Workspace UI 접속</h3>
+          <p>실행 중인 플랫폼 콘솔로 이동합니다. 대시보드 · 트레이스 · 평가 · 가드레일을 한 화면에서.</p>
+          <span class="gw-link">localhost:18090 →</span>
+        </a>
+        <a class="gw-card neu-raised card-hover" href="http://localhost:18080/docs" target="_blank" rel="noopener">
+          <div class="gw-icon neu-pressed"><span class="ico-pink">📘</span></div>
+          <h3>API 문서 (Swagger)</h3>
+          <p>FastAPI 자동 생성 OpenAPI 문서. 전체 REST 엔드포인트를 브라우저에서 바로 호출·테스트.</p>
+          <span class="gw-link">localhost:18080/docs →</span>
+        </a>
+        <a class="gw-card neu-raised card-hover" href="https://github.com/wdlab1958" target="_blank" rel="noopener">
+          <div class="gw-icon neu-pressed"><span class="ico-blue">⌥</span></div>
+          <h3>소스 · 매뉴얼</h3>
+          <p>설치 가이드 · 사용자 매뉴얼 · 릴리스 노트. 순수 온프레미스 배포 문서를 제공합니다.</p>
+          <span class="gw-link">GitHub →</span>
+        </a>
+      </div>
+
+      <div class="quickstart neu-raised">
+        <div class="qs-head">
+          <span class="qs-title">⚡ Quick Start — 5분 설치</span>
+          <span class="qs-sub">Docker Compose 기반. 외부 SaaS 계정 불필요.</span>
+        </div>
+        <div class="qs-steps">
+          <div class="qs-step">
+            <div class="qs-num neu-pressed">1</div>
+            <div class="qs-body">
+              <div class="qs-label">인프라 기동</div>
+              <pre class="qs-code neu-pressed"><code>cp .env.example .env
+make infra-up          # ClickHouse · PostgreSQL · Redis · MinIO · Ollama</code></pre>
+            </div>
+          </div>
+          <div class="qs-step">
+            <div class="qs-num neu-pressed">2</div>
+            <div class="qs-body">
+              <div class="qs-label">플랫폼 기동</div>
+              <pre class="qs-code neu-pressed"><code>./Run_llmops.sh start  # Backend :18080 + Frontend :18090 + 라우팅 검증</code></pre>
+            </div>
+          </div>
+          <div class="qs-step">
+            <div class="qs-num neu-pressed">3</div>
+            <div class="qs-body">
+              <div class="qs-label">SDK로 계측 시작</div>
+              <pre class="qs-code neu-pressed"><code>pip install wdlab-llmops        # Python
+npm i @wdlab/llmops             # TypeScript (Node 18+)
+implementation "ai.wdlab:llmops" # Java (JDK 11+)</code></pre>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -223,9 +313,9 @@
           <div class="pillar-num neu-pressed">02</div>
           <h3 class="pillar-title text-pink">Evaluation</h3>
           <div class="pillar-tags">
-            <span>18 Metrics</span><span>LLM-as-Judge</span><span>A/B Diff</span><span>t-test 유의성</span>
+            <span>19 Metrics</span><span>LLM-as-Judge</span><span>A/B Diff</span><span>t-test 유의성</span>
           </div>
-          <p>Heuristic 9 · LLM-Judge 7 · Korean 2. 불변(sha256) 데이터셋 스냅샷 · 회귀 탐지 · 샘플 단위 드릴다운. Paired t-test 기반 통계적 유의성(p&lt;0.05·95% CI) 판정.</p>
+          <p>Heuristic 9 · LLM-Judge 7 · Korean 3. 불변(sha256) 데이터셋 스냅샷 · 회귀 탐지 · 샘플 단위 드릴다운. Paired t-test 기반 통계적 유의성(p&lt;0.05·95% CI) 판정 — 실측 A/B에서 3개 메트릭 유의차 검출.</p>
         </div>
 
         <div class="pillar neu-raised">
@@ -243,7 +333,7 @@
           <div class="pillar-tags">
             <span>Korean PII</span><span>Prompt Injection</span><span>Exfiltration</span><span>Vision OCR</span>
           </div>
-          <p>주민등록번호 · 카드번호 · 계좌번호 등 9종 KoreanPII, EN/KO 15패턴 인젝션 차단, AWS/OpenAI/GitHub 키 유출 탐지. 이미지 입력은 OCR로 추출해 동일 룰 적용(Vision Guardrails).</p>
+          <p>한국어 가드레일 8종 — 주민등록번호 · 카드번호 · 계좌번호 등 KoreanPII 9패턴, EN/KO 15패턴 인젝션 차단, AWS/OpenAI/GitHub 키 유출 탐지. 이미지 입력은 OCR로 추출해 동일 룰 적용(Vision Guardrails).</p>
         </div>
 
         <div class="pillar neu-raised pillar-wide">
@@ -283,6 +373,14 @@
         <div class="feat-card neu-raised">
           <div class="feat-head"><span class="feat-icon neu-pressed">🔗</span><h4>DAG Flow</h4></div>
           <p>Maestro Dispatch → Worker Agents → Merge. WebSocket 라이브 업데이트로 실행 중 그래프가 자라는 모습 관찰.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🌐</span><h4>End-to-End Flow</h4></div>
+          <p>수집 → 평가 → 가드레일 → 감사까지 요청 하나의 전체 여정을 단일 화면에서 추적. 결정성 경계와 지연 병목을 한눈에.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">💬</span><h4>도움말 챗봇 (전 화면)</h4></div>
+          <p>우측 하단 플로팅 어시스턴트가 화면 사용법 · 용어 · 절차를 로컬 LLM으로 즉시 안내. 서비스 이용자의 첫 진입 장벽을 낮춥니다.</p>
         </div>
       </div>
     </section>
@@ -326,7 +424,7 @@
       <div class="grid-cards">
         <div class="feat-card neu-raised">
           <div class="feat-head"><span class="feat-icon neu-pressed">✅</span><h4>Test Suites</h4></div>
-          <p>회귀 테스트 18 metric. 스위트별 Pass/Fail 비율, CI/CD 연동 시 PR 자동 게이트.</p>
+          <p>회귀 테스트 19 metric. 스위트별 Pass/Fail 비율, CI/CD 연동 시 PR 자동 게이트.</p>
         </div>
         <div class="feat-card neu-raised">
           <div class="feat-head"><span class="feat-icon neu-pressed">🗃</span><h4>Datasets</h4></div>
@@ -341,8 +439,8 @@
           <p>Human-in-the-Loop 피드백, 5% 트레이스 샘플링으로 편향 완화, 큐 진척도 표시.</p>
         </div>
         <div class="feat-card neu-raised">
-          <div class="feat-head"><span class="feat-icon neu-pressed">📐</span><h4>Evaluations</h4></div>
-          <p>Heuristic 9 / LLM-Judge 7 / Korean 2 / Ontology 1 = <b>총 18 metrics</b>. 커스텀 metric 등록 가능.</p>
+          <div class="feat-head"><span class="feat-icon neu-pressed">📐</span><h4>Metrics Catalog</h4></div>
+          <p>Heuristic 9 / LLM-Judge 7 / Korean 3 = <b>총 19 metrics</b>. 커스텀 metric 등록 가능.</p>
         </div>
       </div>
     </section>
@@ -430,7 +528,7 @@
           <div class="arch-layer-title">Frontend</div>
           <div class="arch-blocks">
             <div class="arch-block">React + TypeScript</div>
-            <div class="arch-block">22 Workspace Screens</div>
+            <div class="arch-block">28 Screens · 26 Menus</div>
             <div class="arch-block">i18n ko/en</div>
             <div class="arch-block">WebSocket Live</div>
           </div>
@@ -439,7 +537,7 @@
         <div class="arch-arrow">▼</div>
 
         <div class="arch-layer neu-raised arch-accent-blue">
-          <div class="arch-layer-title">FastAPI Backend · Phase Upgrades 포함</div>
+          <div class="arch-layer-title">FastAPI Backend · Core (Apache-2.0)</div>
           <div class="arch-blocks">
             <div class="arch-block">Ingestion (OTLP + Batch)</div>
             <div class="arch-block">Evaluation Runner</div>
@@ -450,6 +548,25 @@
             <div class="arch-block">Replay · Stat-Test</div>
             <div class="arch-block">Maestro Dispatcher</div>
             <div class="arch-block">RTBF Eraser</div>
+            <div class="arch-block">Span Watchdog</div>
+            <div class="arch-block">Assistant Chatbot</div>
+            <div class="arch-block">Spill Buffer</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-layer neu-raised arch-accent-pink">
+          <div class="arch-layer-title">ee/ Enterprise Modules · 동적 로딩 (v2.0-dev)</div>
+          <div class="arch-blocks">
+            <div class="arch-block">SSO (OIDC · SAML)</div>
+            <div class="arch-block">RBAC 5×12×4</div>
+            <div class="arch-block">SCIM 2.0</div>
+            <div class="arch-block">Platform Audit</div>
+            <div class="arch-block">Multitenancy (RLS)</div>
+            <div class="arch-block">Entitlements · Billing</div>
+            <div class="arch-block">Diagnosis Engine</div>
+            <div class="arch-block">AI Act Package</div>
           </div>
         </div>
 
@@ -489,11 +606,13 @@
         <div class="arch-arrow">▼</div>
 
         <div class="arch-layer neu-raised">
-          <div class="arch-layer-title">Observability Stack</div>
+          <div class="arch-layer-title">Observability · Deploy Stack</div>
           <div class="arch-blocks">
             <div class="arch-block">Prometheus</div>
             <div class="arch-block">Grafana · 6 Dashboards</div>
             <div class="arch-block">OpenTelemetry</div>
+            <div class="arch-block">Helm Chart (K8s HA)</div>
+            <div class="arch-block">k6 Load Harness</div>
           </div>
         </div>
 
@@ -567,6 +686,172 @@
       </div>
     </section>
 
+    <!-- ===== v1.4.x OPS HARDENING (2026.07) ===== -->
+    <section id="ops14x" class="section">
+      <div class="section-head">
+        <span class="section-tag">Platform Evolution · v1.4.x · 2026.07</span>
+        <h2><span class="text-blue">운영 강화</span> — 신뢰성 · 재현성 · 접근성</h2>
+        <p class="section-lead">
+          v1.4.x는 <b>Apache-2.0으로 영구 동결</b>된 오픈 코어 기반 위에, 운영 현장에서 나온 요구를 반영했습니다.
+          도움말 챗봇 · Span Watchdog · 결정성 경계 · Replay 캡슐 완결성.
+        </p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">💬</span><h4>전 화면 도움말 챗봇</h4></div>
+          <p>모든 화면 우측 하단 플로팅 어시스턴트. 화면 안내 · 용어 · 처리 절차를 <b>100% 로컬 LLM</b>으로 답변. 최근 12개 대화 히스토리, 한글 IME 조합 가드 내장.</p>
+          <div class="pillar-tags"><span>POST /assistant/chat</span><span>Local LLM Only</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">⏱</span><h4>Span Watchdog</h4></div>
+          <p>span 유형별 <b>latency budget을 계약으로 선언</b>하고 위반을 주기 스캔으로 산출, Alerts로 발화. "늦은 정답은 오답"이라는 임베디드 RTOS 규율을 LLMOps에 이식했습니다.</p>
+          <div class="pillar-tags"><span>Per-span Deadline</span><span>Alert 연동</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🎲</span><h4>결정성 경계 라벨링</h4></div>
+          <p>수집 시 span마다 <code>determinism</code> 플래그를 자동 주입하고, 트레이스에서 <b>결정성이 끝나는 지점</b>(첫 확률적 span)을 API로 요약. 장애 분석의 출발점을 명확히 합니다.</p>
+          <div class="pillar-tags"><span>GET /traces/{id}/determinism</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📼</span><h4>Replay 캡슐 완결성</h4></div>
+          <p>LLM 경로에 <b>seed 파라미터 관통</b>, temperature·seed 좌표를 트레이스에 기록해 재실행 시 자동 복원. 캡슐 완결성 점수와 model digest 대조로 재현성을 정량화합니다.</p>
+          <div class="pillar-tags"><span>replay-capsule</span><span>Seed 관통</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🗄</span><h4>스키마 마이그레이션 정식화</h4></div>
+          <p>ClickHouse · PostgreSQL 마이그레이션을 버전 파일로 정식화(PG head 023 · CH V006). 수동 DDL 소실 사고 재발을 구조적으로 차단했습니다.</p>
+          <div class="pillar-tags"><span>Alembic V014~V023</span><span>CH V004~V006</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🛟</span><h4>무손실 수집 (G1'·G2')</h4></div>
+          <p>Redis 장애 시에도 degrade 모드로 수집 지속, ClickHouse INSERT 실패 시 <b>디스크 spill 버퍼</b>에 적재 후 15초 주기 백그라운드 재적재. 수집 유실 0을 지향합니다.</p>
+          <div class="pillar-tags"><span>Disk Spill Buffer</span><span>Auto Replay</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== v2.0 OPEN CORE · ENTERPRISE (Phase 21~30) ===== -->
+    <section id="enterprise" class="section">
+      <div class="section-head">
+        <span class="section-tag">Platform Evolution · v2.0.0-dev · Unreleased</span>
+        <h2><span class="text-pink">v2.0 Open Core</span> — Enterprise · SaaS 전환 (Phase 21~30)</h2>
+        <p class="section-lead">
+          코어는 <b>Apache-2.0 오픈소스</b>로 유지하고, 엔터프라이즈 기능은 <code>ee/</code> 모듈로 분리한
+          Open Core 아키텍처로 전환 중입니다. <b>현재 개발 트리에서 진행 중(Unreleased)</b>이며,
+          EE 활성 시 192 API paths · 비활성 시 157 paths로 자동 degrade 됩니다.
+        </p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧬</span><h4>Open Core 라이선스 경계</h4></div>
+          <p>EE는 <b>동적 로더</b>로만 결합 — <code>ee/</code> 부재 시 기능이 노출되지 않는 Community degrade. CI가 core→ee import를 자동 검사해 경계 위반을 차단합니다.</p>
+          <div class="pillar-tags"><span>Apache-2.0 core</span><span>ee/ Commercial</span><span>degrade 157 paths</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🔐</span><h4>Enterprise SSO</h4></div>
+          <p><b>OIDC</b> Authorization Code Flow + <b>SAML 2.0</b> SP. 폐쇄망 Keycloak · AD FS 대응, IdP 통신은 allowlist 호스트로만 허용해 데이터 주권을 유지합니다.</p>
+          <div class="pillar-tags"><span>OIDC</span><span>SAML 2.0</span><span>폐쇄망 IdP</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧑‍⚖️</span><h4>RBAC + SCIM 2.0</h4></div>
+          <p><b>5역할 × 12리소스 × 4행위</b> 권한 매트릭스와 SCIM 2.0 프로비저닝(Okta · Entra ID). 계정 비활성화 시 SSO 세션 즉시 무효화.</p>
+          <div class="pillar-tags"><span>require_permission</span><span>/scim/v2</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧾</span><h4>Platform Audit</h4></div>
+          <p>AI 결정 감사(WORM 3종)와 구분되는 <b>사용자 행위 감사</b> — 로그인 · 권한 변경 · PII 열람 · 삭제 · 내보내기를 append-only + 일 단위 머클 루트로 봉인.</p>
+          <div class="pillar-tags"><span>Append-only</span><span>Daily Merkle Anchor</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🏢</span><h4>멀티테넌시</h4></div>
+          <p>Organization → Workspace → Project <b>3계층</b> + PostgreSQL Row-Level Security + org 단위 rate limit. 온프레미스는 단일 테넌트로 degrade 가능.</p>
+          <div class="pillar-tags"><span>RLS</span><span>Org Rate Limit</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">☸️</span><h4>K8s HA · 부하 시험</h4></div>
+          <p>Helm 차트로 backend HPA · ClickHouse 3-replica · Patroni PG 3 · Redis Sentinel 구성. <b>목표치</b>: 지속 수집 ≥5,000 spans/s · ingest P95 &lt;500ms · 노드 킬 시 유실 0.</p>
+          <div class="pillar-tags"><span>Helm</span><span>k6 하네스</span><span>목표 RTO &lt;60s</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🎫</span><h4>엔타이틀먼트 · 빌링</h4></div>
+          <p><b>Ed25519 서명 오프라인 라이선스 키</b>(phone-home 금지) + 티어 게이팅 + 만료 grace 14일 + soft 미터링(외부 전송 없음) + SaaS 구독 상태 머신.</p>
+          <div class="pillar-tags"><span>Offline License</span><span>No Phone-Home</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🩺</span><h4>AI 서비스 품질 진단 엔진</h4></div>
+          <p>대상 등록 → <b>5단계 상태 머신</b> → <b>4축 스코어카드</b>(품질·안전·컴플라이언스·성능, A~F 등급) → 감사 보고서(DOCX/PDF). 안전 공격 15세트 · 유출 탐지 포함 유료 진단 상품.</p>
+          <div class="pillar-tags"><span>5-Stage Pipeline</span><span>4-Axis Scorecard</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">⚖️</span><h4>AI 기본법 계도기간 대응</h4></div>
+          <p>고영향 AI 판별 위저드, 영향평가 자동 초안(시행령 §26 7항목) + 승인 워크플로, 안전신뢰문서 <b>5년 WORM 보관</b>, 제출용 증빙 패키지 ZIP, <b>계도기간 종료(2027.1) 카운트다운</b>.</p>
+          <div class="pillar-tags"><span>9개 조항 커버</span><span>증빙 ZIP</span><span>월간 자동 생성</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🚀</span><h4>셀프서브 온보딩 · SaaS 운영</h4></div>
+          <p>가입 → org 생성 → API Key 발급 → <b>14일 trial</b>을 원스톱 처리(SaaS 모드 전용). 관리형 SaaS는 국내 리전 데이터 상주 · RPO 1h · RTO 4h 운영 체계를 문서화했습니다.</p>
+          <div class="pillar-tags"><span>POST /signup</span><span>RPO 1h · RTO 4h</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRICING / EDITIONS ===== -->
+    <section id="pricing" class="section">
+      <div class="section-head">
+        <span class="section-tag">Editions · Pricing</span>
+        <h2><span class="text-blue">에디션</span> · 요금제</h2>
+        <p class="section-lead">
+          <b>좌석 과금 없음</b> — 전 티어 좌석 무제한. 폐쇄망 · 100% 로컬 LLM은 무료로 유지되며 절대 게이팅하지 않습니다.
+          v1.4.x 코어는 Apache-2.0으로 영구 동결.
+        </p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="price-card neu-raised">
+          <div class="price-tier">Community</div>
+          <div class="price-value text-blue">무료</div>
+          <div class="price-license">Apache-2.0</div>
+          <ul class="price-feats">
+            <li>트레이싱 · OTLP 수집 · Maestro 5계층 DAG</li>
+            <li>평가 메트릭 19종 · 옵티마이저 6종</li>
+            <li>A/B 통계 유의성 검정 내장</li>
+            <li>39 프레임워크 어댑터 · Playground</li>
+            <li>Python · TS · Java SDK + IDE 플러그인</li>
+            <li>폐쇄망 · 100% 로컬 LLM</li>
+          </ul>
+        </div>
+        <div class="price-card neu-raised price-featured">
+          <div class="price-tier">Professional</div>
+          <div class="price-value text-pink">연 1,200만원</div>
+          <div class="price-license">워크스페이스 단위 · WDLAB Commercial</div>
+          <ul class="price-feats">
+            <li>Community 전체 포함</li>
+            <li>한국어 가드레일 8종 (Vision PII 포함)</li>
+            <li>온톨로지 환각 검증 (SHACL · SPARQL)</li>
+            <li>RBAC · SSO (SAML · OIDC)</li>
+            <li>온라인 평가 워커 · 진단 엔진</li>
+            <li>업무시간 기술지원</li>
+          </ul>
+        </div>
+        <div class="price-card neu-raised">
+          <div class="price-tier">Compliance · Enterprise</div>
+          <div class="price-value text-blue">연 3,600만원~</div>
+          <div class="price-license">법인 단위 · WDLAB Commercial</div>
+          <ul class="price-feats">
+            <li>Professional 전체 포함</li>
+            <li>WORM 감사 3종 · 머클 · HMAC 무결성</li>
+            <li>AI 기본법 9개 조항 대응 · 월간 리포트 자동화</li>
+            <li>영향평가 7항목 + 고영향 판별 위저드</li>
+            <li>SCIM · 플랫폼 행위 감사 · RTBF</li>
+            <li>ISMS-P 매핑 · 폐쇄망 구축 지원 · 규제 자문</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pricing-note">※ 가격은 파일럿 실측(WTP) 후 2027년 초 확정 예정인 초안 기준입니다. 구축(SI) · 유지보수 · 규제 자문은 별도 견적.</p>
+    </section>
+
     <!-- ===== DIFFERENTIATORS ===== -->
     <section id="diff" class="section">
       <div class="section-head">
@@ -597,8 +882,23 @@
         </div>
         <div class="compare-row">
           <div>한국어 가드레일</div>
-          <div class="hi">7종 · 주민번호/카드/계좌 등 9패턴</div>
+          <div class="hi">8종 · 주민번호/카드/계좌 등 9패턴 + Vision PII</div>
           <div class="lo">미지원 또는 영어 일부</div>
+        </div>
+        <div class="compare-row">
+          <div>엔터프라이즈 IAM</div>
+          <div class="hi">SSO(OIDC·SAML) · RBAC 5×12×4 · SCIM 2.0 — 폐쇄망 IdP 대응</div>
+          <div class="lo">Cloud IdP 중심 또는 유료 SaaS 전용</div>
+        </div>
+        <div class="compare-row">
+          <div>품질 진단 상품</div>
+          <div class="hi">5단계 진단 엔진 · 4축 스코어카드 · 감사 보고서</div>
+          <div class="lo">없음</div>
+        </div>
+        <div class="compare-row">
+          <div>라이선스 모델</div>
+          <div class="hi">Open Core — 오프라인 키 · phone-home 없음 · 좌석 무제한</div>
+          <div class="lo">사용량/좌석 과금 · 온라인 라이선스 확인</div>
         </div>
         <div class="compare-row">
           <div>AI 기본법 컴플라이언스</div>
@@ -666,10 +966,20 @@
           <h4>Opik 호환 · Auto-Bootstrap</h4>
           <p>폴더 스캔 위저드, .wdlab/ 자동 생성, OPENAI_API_BASE 자동 재작성</p>
         </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">v1.4 · Phase 13~24</div>
+          <h4>Phase Upgrades 코어 통합</h4>
+          <p>Replay · A/B 유의성 · Vision Guardrails · Distributed Maestro · TS/Java SDK · IDE Plugins · RTBF</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">v1.4.x · 2026.07</div>
+          <h4>운영 강화 · Apache-2.0 동결</h4>
+          <p>도움말 챗봇 · Span Watchdog · 결정성 라벨링 · Replay 캡슐 · 무손실 수집 · 마이그레이션 정식화</p>
+        </div>
         <div class="tl-item neu-raised pulse-card">
-          <div class="tl-tag tl-current">v1.4 · Phase 13~24 · NOW</div>
-          <h4>Phase Upgrades · 코어 통합 완료</h4>
-          <p>End-to-End Replay · 통계적 A/B 유의성 · Vision Guardrails · Distributed Maestro · TS/Java SDK · IDE Plugins · RTBF 워크플로 — 전부 구현·통합 완료</p>
+          <div class="tl-tag tl-current">v2.0.0-dev · Phase 21~30 · NOW</div>
+          <h4>Open Core · Enterprise 전환 (진행 중)</h4>
+          <p>SSO · RBAC · SCIM · 멀티테넌시 · K8s HA · 오프라인 라이선스 · 진단 엔진 · AI 기본법 계도기간 패키지 · 셀프서브 SaaS</p>
         </div>
       </div>
     </section>
@@ -722,7 +1032,7 @@
           </div>
         </div>
         <div class="footer-meta">
-          <div>v1.4 · Phase 13~24 · 2026.06.02</div>
+          <div>v2.0.0-dev · Phase 21~30 진행 중 · 2026.08</div>
           <div>© WDLAB · Built for AI 기본법 era</div>
         </div>
       </div>

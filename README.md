@@ -1,9 +1,9 @@
 # WDLAB-LLMOps · Landing Page
 
-**Self-Hosted LLMOps Platform** 소개 웹페이지입니다. LLM과 AI Agent 응용 시스템의
-관측 · 평가 · 최적화 · 가드레일 · 투명성을 하나의 계층으로 통합한
-자체 호스팅형 플랫폼 **WDLAB-LLMOps v1.4 (Phase 13~24 통합)** 의 아이덴티티 · 핵심 기능 · 아키텍처를
-정적 사이트로 제공합니다.
+**Self-Hosted Open Core LLMOps Platform** 소개 웹페이지이자 서비스 이용자 대문(Gateway)입니다.
+LLM과 AI Agent 응용 시스템의 관측 · 평가 · 최적화 · 가드레일 · 투명성을 하나의 계층으로 통합한
+자체 호스팅형 플랫폼 **WDLAB-LLMOps v2.0.0-dev (Open Core · Phase 21~30 진행 중)** 의
+진입점 · 아이덴티티 · 핵심 기능 · 에디션 · 아키텍처를 정적 사이트로 제공합니다.
 
 - **Live demo**: https://wdlab1958.github.io/WDLAB-LLMOps-Webpage/
 - **Repository**: https://github.com/wdlab1958/WDLAB-LLMOps-Webpage
@@ -21,12 +21,21 @@
 | 무결성 봉인 | WORM Append-only + HMAC-SHA256 Merkle 체인. 변조 즉시 탐지. |
 | XAI 5계층 | Raw → Feature → Natural Language → Visual → Actionable. `/explain` API. |
 
+## 대문(Gateway) 구성
+
+서비스 이용자가 바로 진입할 수 있는 3개 진입점 + Quick Start를 최상단에 배치했습니다.
+
+- **Workspace UI 접속** — 실행 중인 플랫폼 콘솔 (`localhost:18090`)
+- **API 문서 (Swagger)** — FastAPI OpenAPI 문서 (`localhost:18080/docs`)
+- **소스 · 매뉴얼** — GitHub 저장소, 사용자 매뉴얼, 릴리스 노트
+- **Quick Start** — 인프라 기동 → 플랫폼 기동 → SDK 설치 3단계 (5분)
+
 ## 5대 축 (Pillars)
 
-1. **Observability** — Maestro DAG 5-Layer · Gantt · WebSocket Stream
-2. **Evaluation** — 18 Metrics (Heuristic 9 / LLM-Judge 7 / Korean 2) · A/B Diff
+1. **Observability** — Maestro DAG 5-Layer · Gantt · End-to-End Flow · WebSocket Stream
+2. **Evaluation** — 19 Metrics (Heuristic 9 / LLM-Judge 7 / Korean 3) · A/B Diff · t-test 유의성
 3. **Optimization** — GEPA · MetaPrompt · HRPO · Pareto Frontier
-4. **Guardrails** — Korean PII 9종 · Prompt Injection 15패턴 · 키 유출 탐지
+4. **Guardrails** — 한국어 가드레일 8종 · KoreanPII 9패턴 · Injection 15패턴 · Vision PII
 5. **Transparency** — AI 기본법 §31·§34 · WORM Ledger · Decision Basis · Monthly Report
 
 ## Phase 13~24 신규 역량 (v1.4)
@@ -41,17 +50,52 @@
 6. **IDE Plugins** — VS Code · JetBrains/IntelliJ, 커서 UUID → Trace Detail 점프
 7. **RTBF 워크플로** — 잊힐 권리 삭제(개인정보보호법 §36 · GDPR 17), 해시 보존 마스킹
 
+## v1.4.x 운영 강화 (2026.07)
+
+- **전 화면 도움말 챗봇** — 100% 로컬 LLM 어시스턴트, IME 가드
+- **Span Watchdog** — span 유형별 latency budget 계약 + Alerts 발화
+- **결정성 경계 라벨링** — determinism 플래그 자동 주입, 첫 확률적 span 요약 API
+- **Replay 캡슐 완결성** — seed 관통 · temperature/seed 좌표 기록 · 완결성 점수
+- **무손실 수집 (G1'·G2')** — Redis degrade 수집 지속 + ClickHouse 디스크 spill 버퍼
+- **스키마 마이그레이션 정식화** — PG Alembic V014~V023 · CH V004~V006
+
+## v2.0 Open Core · Enterprise (Phase 21~30, Unreleased)
+
+코어는 Apache-2.0으로 유지(v1.4.x 영구 동결), 엔터프라이즈 기능은 `ee/` 동적 로딩.
+EE 활성 시 192 API paths / 비활성 시 157 paths degrade.
+
+- **Open Core 라이선스 경계** — ee_loader 동적 결합, CI 경계 검사
+- **Enterprise SSO** — OIDC + SAML 2.0, 폐쇄망 Keycloak·AD FS 대응
+- **RBAC 5×12×4 + SCIM 2.0** — Okta·Entra ID 프로비저닝
+- **Platform Audit** — 사용자 행위 감사, append-only + 일 단위 머클 앵커
+- **멀티테넌시** — Org→Workspace→Project 3계층 + PostgreSQL RLS
+- **K8s HA** — Helm 차트(HPA·CH 3-replica·Patroni·Sentinel) + k6 부하 하네스
+- **엔타이틀먼트·빌링** — Ed25519 오프라인 라이선스 키, phone-home 없음
+- **AI 서비스 품질 진단 엔진** — 5단계 상태 머신 · 4축 스코어카드 · 감사 보고서
+- **AI 기본법 계도기간 대응** — 고영향 판별 위저드 · 증빙 ZIP · 2027.1 카운트다운
+- **셀프서브 온보딩 · SaaS 운영** — signup→trial 14일, RPO 1h · RTO 4h
+
+## 에디션 · 요금제 (초안 — 2027년 초 확정 예정)
+
+| 티어 | 가격 | 범위 |
+|---|---|---|
+| Community | 무료 (Apache-2.0) | 트레이싱 · 평가 19종 · A/B 유의성 · SDK 3종 · IDE 2종 |
+| Professional | 연 1,200만원 / 워크스페이스 | + 가드레일 8종 · 온톨로지 검증 · RBAC · SSO · 진단 엔진 |
+| Compliance · Enterprise | 연 3,600만원~ / 법인 | + WORM·머클 · AI 기본법 9개 조항 · SCIM · RTBF · 규제 자문 |
+
+원칙: 좌석 과금 없음 · 폐쇄망/로컬 LLM 무료 유지 · v1.4.x Apache-2.0 영구 동결.
+
 ---
 
 ## 프로젝트 구조
 
 ```
 WDLAB-LLMOps_Webpage/
-├── index.html        # 단일 페이지 진입점 (사이드바 + 13개 섹션)
+├── index.html        # 단일 페이지 진입점 (사이드바 + Gateway + 17개 섹션)
 ├── css/
-│   └── style.css     # 뉴모피즘 디자인 시스템
+│   └── style.css     # 뉴모피즘 디자인 시스템 (+ Gateway · Pricing · 모바일 메뉴)
 ├── js/
-│   └── app.js        # 스크롤 인터랙션 · 사이드바 활성 상태
+│   └── app.js        # 스크롤 인터랙션 · 사이드바 활성 상태 · 모바일 햄버거 메뉴
 └── assets/           # 이미지 · 다이어그램 (옵션)
 ```
 

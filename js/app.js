@@ -2,6 +2,25 @@
 (function () {
   'use strict';
 
+  // ---------- Mobile sidebar toggle ----------
+  const sidebar = document.getElementById('sidebar');
+  const menuToggle = document.getElementById('menuToggle');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  const closeSidebar = () => {
+    if (!sidebar) return;
+    sidebar.classList.remove('open');
+    if (menuToggle) menuToggle.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('show');
+  };
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', () => {
+      const opened = sidebar.classList.toggle('open');
+      menuToggle.classList.toggle('open', opened);
+      if (backdrop) backdrop.classList.toggle('show', opened);
+    });
+  }
+  if (backdrop) backdrop.addEventListener('click', closeSidebar);
+
   // ---------- Smooth scroll + active sidebar item ----------
   const navItems = document.querySelectorAll('.nav-item');
   const sections = Array.from(document.querySelectorAll('main .section'));
@@ -16,6 +35,7 @@
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       navItems.forEach((n) => n.classList.remove('active'));
       a.classList.add('active');
+      closeSidebar();
     });
   });
 
