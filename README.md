@@ -1,9 +1,13 @@
 # WDLAB-LLMOps · Landing Page
 
 **Self-Hosted Open Core LLMOps Platform** 소개 웹페이지이자 서비스 이용자 대문(Gateway)입니다.
-LLM과 AI Agent 응용 시스템의 관측 · 평가 · 최적화 · 가드레일 · 투명성을 하나의 계층으로 통합한
-자체 호스팅형 플랫폼 **WDLAB-LLMOps v2.0.0-dev (Open Core · Phase 21~30 진행 중)** 의
-진입점 · 아이덴티티 · 핵심 기능 · 에디션 · 아키텍처를 정적 사이트로 제공합니다.
+LLM과 AI 에이전트 서비스를 **관측 · 평가 · 최적화 · 통제 · 증빙**하는 자체 호스팅 종합 운영 플랫폼
+**WDLAB-LLMOps v2.0.0-dev (Open Core · Phase 21~30 진행 중)** 을, **2027년 1월 22일 AI 기본법
+계도기간 종료**에 대비하는 관점(제34조 고영향 AI 사업자 책무 · ISO 42001/27001 거버넌스 ·
+Diagnosis·EE 품질 진단 보고서)에서 소비자가 이해하기 쉬운 언어로 소개합니다.
+
+> 2026-08-28: 원본 프로젝트 v2.0.0-dev 기준 내용 동기화. 디자인·구성은 유지하고 본문을 압축,
+> AI 전문용어를 줄이고 제34조 ② "결과 도출 기준 설명" 대응을 핵심 메시지로 재구성.
 
 - **Live demo**: https://wdlab1958.github.io/WDLAB-LLMOps-Webpage/
 - **Repository**: https://github.com/wdlab1958/WDLAB-LLMOps-Webpage
@@ -14,8 +18,12 @@ LLM과 AI Agent 응용 시스템의 관측 · 평가 · 최적화 · 가드레�
 
 | 영역 | 요약 |
 |---|---|
+| 왜 지금 | 2027.01.22 계도기간 종료 → 제34조 위반 시 과태료 3천만원 이하. 금융·증권·물류·판매 AI 서비스가 대상. |
+| 제34조 4대 책무 | ① 위험관리 ② **결과 도출 기준 설명(핵심)** ③ 이용자 보호 ④ 책임자 지정·공시 — 운영 중 자동 증빙. |
+| ISO 42001 · 27001 | 영향평가·모델 카드·행위 감사를 국제 표준 통제 항목에 매핑, 인증 심사 증거로 재사용. |
+| Diagnosis · EE | 5단계 품질 진단 → 4축 스코어카드(품질·안전·준수·성능) → 봉인 기록 연동 보고서(DOCX/PDF). |
+| 규제 기관 대응 | 과기정통부 · AISI · NIA · PIPC · MOIS · MCST 사실조사·점검 시 증빙 ZIP 제출. |
 | 데이터 주권 | 모든 트레이스 · 평가 · 감사 로그 온프레미스 저장. 외부 SaaS 전송 0건. |
-| AI 기본법 준수 | 제31조(고지 · 공개) · 제34조(영향평가 · 결정근거 · 이의제기) 자동 증거 누적. |
 | 멀티 에이전트 | LangGraph · CrewAI · AutoGen 등 39개 프레임워크를 Maestro 5계층 DAG로 표준화. |
 | Zero-Cost 추론 | Ollama · vLLM 기반 로컬 모델 운영, 외부 LLM 호출 prefix block. |
 | 무결성 봉인 | WORM Append-only + HMAC-SHA256 Merkle 체인. 변조 즉시 탐지. |

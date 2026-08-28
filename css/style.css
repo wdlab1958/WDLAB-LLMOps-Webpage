@@ -887,3 +887,7 @@ code { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; padding: 2px
   .compare-row { grid-template-columns: 1fr; gap: 6px; padding: 14px 16px; }
   .compare-head { display: none; }
 }
+
+/* v2.0 · AI 기본법 강조 — 긴 수치용 소형 스탯 · 규제기관 링크 */
+.stat-number.stat-sm { font-size: 28px; line-height: 1.35; }
+.law-desc a { text-decoration: underline; text-underline-offset: 3px; }
