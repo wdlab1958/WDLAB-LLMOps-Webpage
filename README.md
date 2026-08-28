@@ -2,11 +2,11 @@
 
 **Self-Hosted Open Core LLMOps Platform** 소개 웹페이지이자 서비스 이용자 대문(Gateway)입니다.
 LLM과 AI 에이전트 서비스를 **관측 · 평가 · 최적화 · 통제 · 증빙**하는 클라우드 SaaS 서비스
-**WDLAB-LLMOps v2.0.0-dev (Open Core · Phase 21~30 진행 중)** 을, **2027년 1월 22일 AI 기본법
+**WDLAB-LLMOps v2.0 (Open Core · Phase 21~30 구현 완료, 2026-08)** 을, **2027년 1월 22일 AI 기본법
 계도기간 종료**에 대비하는 관점(제34조 고영향 AI 사업자 책무 · ISO 42001/27001 거버넌스 ·
 Diagnosis·EE 품질 진단 보고서)에서 소비자가 이해하기 쉬운 언어로 소개합니다.
 
-> 2026-08-28: 원본 프로젝트 v2.0.0-dev 기준 내용 동기화. 디자인·구성은 유지하고 본문을 압축,
+> 2026-08-28: Phase 21~30(SSO·RBAC·SCIM·멀티테넌시·라이선스·빌링·행위 감사·진단 엔진·AI 기본법 패키지) 구현 완료 반영. 원본 프로젝트 v2.0 기준 내용 동기화. 디자인·구성은 유지하고 본문을 압축,
 > AI 전문용어를 줄이고 제34조 ② "결과 도출 기준 설명" 대응을 핵심 메시지로 재구성.
 
 - **Live demo**: https://wdlab1958.github.io/WDLAB-LLMOps-Webpage/
@@ -26,7 +26,7 @@ Diagnosis·EE 품질 진단 보고서)에서 소비자가 이해하기 쉬운 �
 | 서비스 방식 | v2.0 Open Core = SaaS. Community(무료·Apache-2.0·자체 설치) / Professional(EE·SMB) / Compliance·Enterprise(EE·중견·대기업) 3 에디션. |
 | 대상 사용자 | Community: AI·백엔드 개발자, MLOps·플랫폼 운영자. Professional·Enterprise: PM/PO, 법무·감사·컴플라이언스 담당자 (과금). |
 | 경쟁 구도 | 글로벌 LLMOps 9종 · Dataiku(셀프 테스트·Gartner 리더·고가) 모두 SaaS, LRQA는 ISO 42001 공인 인증 발급 기관(보완 파트너) — 한국 AI 기본법 대응은 WDLAB 유일. 근거: `WDLAB_vs_글로벌_LLMOps_9종_비교표.xlsx`, `Dataiku_vs_LRQA_vs_WDLAB-LLMOps_비교표.xlsx`. |
-| 멀티 에이전트 | LangGraph · CrewAI · AutoGen 등 39개 프레임워크를 Maestro 5계층 DAG로 표준화. |
+| 멀티 에이전트 | LangGraph · CrewAI · AutoGen 등 47개 프레임워크를 Maestro 5계층 DAG로 표준화. |
 | Zero-Cost 추론 | Ollama · vLLM 기반 로컬 모델 운영, 외부 LLM 호출 prefix block. |
 | 무결성 봉인 | WORM Append-only + HMAC-SHA256 Merkle 체인. 변조 즉시 탐지. |
 | XAI 5계층 | Raw → Feature → Natural Language → Visual → Actionable. `/explain` API. |
@@ -72,7 +72,7 @@ Diagnosis·EE 품질 진단 보고서)에서 소비자가 이해하기 쉬운 �
 ## v2.0 Open Core · Enterprise (Phase 21~30, Unreleased)
 
 코어는 Apache-2.0으로 유지(v1.4.x 영구 동결), 엔터프라이즈 기능은 `ee/` 동적 로딩.
-EE 활성 시 192 API paths / 비활성 시 157 paths degrade.
+EE 활성 시 223 API paths / 비활성 시 Community degrade.
 
 - **Open Core 라이선스 경계** — ee_loader 동적 결합, CI 경계 검사
 - **Enterprise SSO** — OIDC + SAML 2.0, 폐쇄망 Keycloak·AD FS 대응
