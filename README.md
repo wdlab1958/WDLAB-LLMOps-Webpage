@@ -1,7 +1,7 @@
 # WDLAB-LLMOps · Landing Page
 
 **Self-Hosted Open Core LLMOps Platform** 소개 웹페이지이자 서비스 이용자 대문(Gateway)입니다.
-LLM과 AI 에이전트 서비스를 **관측 · 평가 · 최적화 · 통제 · 증빙**하는 자체 호스팅 종합 운영 플랫폼
+LLM과 AI 에이전트 서비스를 **관측 · 평가 · 최적화 · 통제 · 증빙**하는 클라우드 SaaS 서비스
 **WDLAB-LLMOps v2.0.0-dev (Open Core · Phase 21~30 진행 중)** 을, **2027년 1월 22일 AI 기본법
 계도기간 종료**에 대비하는 관점(제34조 고영향 AI 사업자 책무 · ISO 42001/27001 거버넌스 ·
 Diagnosis·EE 품질 진단 보고서)에서 소비자가 이해하기 쉬운 언어로 소개합니다.
@@ -23,7 +23,9 @@ Diagnosis·EE 품질 진단 보고서)에서 소비자가 이해하기 쉬운 �
 | ISO 42001 · 27001 | 영향평가·모델 카드·행위 감사를 국제 표준 통제 항목에 매핑, 인증 심사 증거로 재사용. |
 | Diagnosis · EE | 5단계 품질 진단 → 4축 스코어카드(품질·안전·준수·성능) → 봉인 기록 연동 보고서(DOCX/PDF). |
 | 규제 기관 대응 | 과기정통부 · AISI · NIA · PIPC · MOIS · MCST 사실조사·점검 시 증빙 ZIP 제출. |
-| 데이터 주권 | 모든 트레이스 · 평가 · 감사 로그 온프레미스 저장. 외부 SaaS 전송 0건. |
+| 서비스 방식 | v2.0 Open Core = SaaS. Community(무료·Apache-2.0·자체 설치) / Professional(EE·SMB) / Compliance·Enterprise(EE·중견·대기업) 3 에디션. |
+| 대상 사용자 | Community: AI·백엔드 개발자, MLOps·플랫폼 운영자. Professional·Enterprise: PM/PO, 법무·감사·컴플라이언스 담당자 (과금). |
+| 경쟁 구도 | 글로벌 LLMOps 9종 · Dataiku(셀프 테스트) 모두 SaaS, LRQA는 ISO 42001 컨설팅 — 한국 AI 기본법 대응은 WDLAB 유일. |
 | 멀티 에이전트 | LangGraph · CrewAI · AutoGen 등 39개 프레임워크를 Maestro 5계층 DAG로 표준화. |
 | Zero-Cost 추론 | Ollama · vLLM 기반 로컬 모델 운영, 외부 LLM 호출 prefix block. |
 | 무결성 봉인 | WORM Append-only + HMAC-SHA256 Merkle 체인. 변조 즉시 탐지. |

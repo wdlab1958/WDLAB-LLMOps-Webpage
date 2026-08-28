@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>WDLAB-LLMOps · AI 기본법 대비 운영 플랫폼</title>
-<meta name="description" content="WDLAB-LLMOps는 LLM·AI 에이전트 서비스를 관측·평가·최적화·통제·증빙하는 자체 호스팅 운영 플랫폼입니다. 2027년 1월 22일 AI 기본법 계도기간 종료에 대비해 고영향 AI 사업자 책무(제34조), ISO 42001·27001 거버넌스, AI 서비스 품질 진단 보고서를 자동으로 준비합니다." />
+<title>WDLAB-LLMOps · AI 기본법 대비 SaaS 운영 플랫폼</title>
+<meta name="description" content="WDLAB-LLMOps v2.0 Open Core는 LLM·AI 에이전트 서비스를 관측·평가·최적화·통제·증빙하는 클라우드 SaaS 서비스입니다. Community(무료·자체 설치) / Professional(EE·SMB) / Compliance·Enterprise(EE·중견·대기업) 3개 에디션. 2027년 1월 22일 AI 기본법 계도기간 종료에 대비해 고영향 AI 사업자 책무(제34조), ISO 42001·27001 거버넌스, AI 서비스 품질 진단 보고서를 자동으로 준비합니다." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -104,7 +104,7 @@
     </nav>
 
     <div class="sidebar-footer neu-pressed">
-      <div class="status-led"><span class="pulse"></span> 100% Local · On-Prem</div>
+      <div class="status-led"><span class="pulse"></span> SaaS · Open Core · 3 Editions</div>
     </div>
   </aside>
 
@@ -114,7 +114,7 @@
     <!-- ===== HERO ===== -->
     <section id="hero" class="section section-hero">
       <div class="hero-meta">
-        <span class="chip neu-pressed">Self-Hosted · Open Core</span>
+        <span class="chip neu-pressed">SaaS · Open Core · 3 에디션</span>
         <span class="chip neu-pressed">AI 기본법 제31조 · 제34조 대비</span>
         <span class="chip neu-pressed">⏳ 계도기간 종료 2027.01.22</span>
         <span class="chip neu-pressed">v2.0.0-dev · 2026.08</span>
@@ -125,7 +125,7 @@
       </h1>
       <p class="hero-tagline">
         LLM · AI 에이전트 서비스를 <b>관측 · 평가 · 최적화 · 통제 · 증빙</b>하는<br/>
-        <b>자체 호스팅 종합 운영 플랫폼</b> — AI가 왜 그런 답을 냈는지, 감사인 앞에서 증명합니다.
+        <b>클라우드 서버에서 제공하는 SaaS 서비스</b> — 회원 가입만으로 시작하고, AI가 왜 그런 답을 냈는지 감사인 앞에서 증명합니다.
       </p>
 
       <div class="hero-cta">
@@ -136,7 +136,7 @@
           <span>제34조 4대 책무 대응</span>
         </button>
         <button class="btn-neu" onclick="document.getElementById('gateway').scrollIntoView({behavior:'smooth'})">
-          <span>플랫폼 시작하기</span>
+          <span>서비스 가입 · 시작하기</span>
         </button>
       </div>
 
@@ -179,7 +179,7 @@
         <span class="chip neu-pressed">✅ 통합 시험 17/17 통과</span>
         <span class="chip neu-pressed">🤖 에이전트 시험 10/10 통과</span>
         <span class="chip neu-pressed">🧪 단위 시험 111건</span>
-        <span class="chip neu-pressed">🔒 외부 전송 0건 · 100% 로컬 실행</span>
+        <span class="chip neu-pressed">🔒 국내 리전 데이터 상주 · 외부 AI 미사용</span>
       </div>
     </section>
 
@@ -189,35 +189,36 @@
         <span class="section-tag">Gateway</span>
         <h2>플랫폼으로 <span class="text-blue">바로 들어가기</span></h2>
         <p class="section-lead">
-          외부 클라우드 계정 없이, 회사 내부 서버에서 5분 안에 시작합니다.
+          <b>Professional · Enterprise</b>는 가입 → 조직 생성 → API Key 발급 → <b>14일 무료 체험</b>으로 바로 시작하는 SaaS입니다.
+          <b>Community</b>는 오픈소스를 내려받아 자체 서버에 설치합니다.
         </p>
       </div>
 
       <div class="gateway-grid">
         <a class="gw-card neu-raised card-hover" href="http://localhost:18090/" target="_blank" rel="noopener">
           <div class="gw-icon neu-pressed"><span class="ico-blue">🖥</span></div>
-          <h3>Workspace UI 접속</h3>
-          <p>대시보드 · 기록 · 평가 · 안전장치 · 증빙을 한 화면에서.</p>
-          <span class="gw-link">localhost:18090 →</span>
+          <h3>SaaS 서비스 접속 · 가입</h3>
+          <p>대시보드 · 기록 · 평가 · 안전장치 · 증빙을 한 화면에서. 가입 즉시 14일 체험.</p>
+          <span class="gw-link">Workspace 로그인 →</span>
         </a>
         <a class="gw-card neu-raised card-hover" href="http://localhost:18080/docs" target="_blank" rel="noopener">
           <div class="gw-icon neu-pressed"><span class="ico-pink">📘</span></div>
           <h3>API 문서 (Swagger)</h3>
-          <p>모든 기능을 브라우저에서 바로 호출·확인.</p>
-          <span class="gw-link">localhost:18080/docs →</span>
+          <p>내 서비스를 연결하는 데 필요한 모든 기능을 브라우저에서 확인.</p>
+          <span class="gw-link">API Docs →</span>
         </a>
         <a class="gw-card neu-raised card-hover" href="https://github.com/wdlab1958" target="_blank" rel="noopener">
           <div class="gw-icon neu-pressed"><span class="ico-blue">⌥</span></div>
-          <h3>소스 · 매뉴얼</h3>
-          <p>설치 가이드 · 사용자 매뉴얼 · 릴리스 노트.</p>
+          <h3>Community 오픈소스</h3>
+          <p>Apache-2.0 소스 · 자체 설치 가이드 · 사용자 매뉴얼 · 릴리스 노트.</p>
           <span class="gw-link">GitHub →</span>
         </a>
       </div>
 
       <div class="quickstart neu-raised">
         <div class="qs-head">
-          <span class="qs-title">⚡ Quick Start — 5분 설치</span>
-          <span class="qs-sub">Docker Compose 기반 · 외부 SaaS 계정 불필요</span>
+          <span class="qs-title">⚡ Quick Start — Community 자체 설치 (5분)</span>
+          <span class="qs-sub">SaaS 이용자는 1·2단계 없이 3단계(연결)만 하면 됩니다</span>
         </div>
         <div class="qs-steps">
           <div class="qs-step">
@@ -288,8 +289,8 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
         </div>
         <div class="card neu-raised card-hover">
           <div class="card-icon neu-pressed"><span class="ico-blue">⌘</span></div>
-          <h3>데이터는 회사 밖으로 나가지 않음</h3>
-          <p>모든 기록과 AI 실행이 회사 서버 안에서 끝납니다. 고객 정보 · 영업비밀이 해외 서버로 가는 일이 없습니다.</p>
+          <h3>데이터는 국내에, 외부 AI는 쓰지 않음</h3>
+          <p>SaaS 데이터는 국내 리전에만 저장되고, 평가·안전장치용 AI도 플랫폼 내부 모델만 사용합니다. 폐쇄망이 필요하면 Community를 자체 설치합니다.</p>
         </div>
       </div>
     </section>
@@ -545,7 +546,7 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
           </div>
           <div class="law-cell">
             <div class="law-tag">MOIS 행정안전부</div>
-            <div class="law-desc">공공기관 AI 도입 시 폐쇄망 자체 호스팅 · 접근 통제 · 행위 감사</div>
+            <div class="law-desc">공공기관 AI 도입 시 Community 자체 설치(폐쇄망) 또는 SaaS · 접근 통제 · 행위 감사</div>
           </div>
           <div class="law-cell">
             <div class="law-tag">MCST 문화체육관광부</div>
@@ -564,7 +565,7 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
       <div class="section-head">
         <span class="section-tag">System</span>
         <h2><span class="text-pink">시스템</span> 아키텍처</h2>
-        <p class="section-lead">모든 구성요소가 회사 서버 안의 컨테이너로 동작합니다. 외부 AI 호출은 기본 차단.</p>
+        <p class="section-lead">SaaS(Professional · Enterprise)와 Community 자체 설치가 같은 구조를 씁니다. 외부 AI 호출은 기본 차단.</p>
       </div>
 
       <div class="arch">
@@ -638,7 +639,7 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
         <div class="arch-arrow">▼</div>
 
         <div class="arch-layer neu-raised arch-accent-pink">
-          <div class="arch-layer-title">AI 실행 · 회사 내부 전용</div>
+          <div class="arch-layer-title">AI 실행 · 플랫폼 내부 모델 전용</div>
           <div class="arch-blocks">
             <div class="arch-block">Ollama (gemma3 · qwen3 · llama3.2)</div>
             <div class="arch-block">vLLM</div>
@@ -772,7 +773,7 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
         <span class="section-tag">Diagnosis · EE · v2.0.0-dev</span>
         <h2><span class="text-pink">AI 서비스 품질 진단</span> + 기업용 거버넌스 (Phase 21~30)</h2>
         <p class="section-lead">
-          핵심은 오픈소스로, 규제 대응과 조직 관리 기능은 <code>ee/</code> 모듈로 제공합니다.
+          핵심은 오픈소스(Community)로, 규제 대응과 조직 관리 기능은 <code>ee/</code> 모듈로 SaaS에서 과금 제공합니다.
           <b>진단 → 보고서 → 증빙 제출</b>까지 한 흐름으로 이어집니다.
         </p>
       </div>
@@ -830,18 +831,21 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
     <section id="pricing" class="section">
       <div class="section-head">
         <span class="section-tag">Editions · Pricing</span>
-        <h2><span class="text-blue">에디션</span> · 요금제</h2>
+        <h2><span class="text-blue">3 에디션</span> — 누구를 위한 서비스인가</h2>
         <p class="section-lead">
-          <b>사용자 수 과금 없음</b>. 폐쇄망 · 내부 AI 실행은 무료로 유지합니다. v1.4.x 핵심은 Apache-2.0 영구 공개.
+          <b>Community</b>는 개발자 · 운영자를 위한 무료 오픈코어, <b>Professional · Compliance/Enterprise</b>는
+          기업의 의사결정자와 법무 · 감사 담당자가 자사 AI 서비스에 쓰는 유료 SaaS(EE)입니다. 사용자 수 과금 없음.
         </p>
       </div>
 
       <div class="pricing-grid">
         <div class="price-card neu-raised">
-          <div class="price-tier">Community</div>
+          <div class="price-tier">Community · 오픈코어</div>
           <div class="price-value text-blue">무료</div>
-          <div class="price-license">Apache-2.0</div>
+          <div class="price-license">Apache-2.0 · 자체 설치</div>
           <ul class="price-feats">
+            <li><b>AI · 백엔드 개발자</b> — 내 에이전트 · LLM 앱에 계측을 붙이고 기록을 분석</li>
+            <li><b>MLOps · 플랫폼 운영자</b> — 인프라 기동, 대시보드 · 알림 · 백업 운영</li>
             <li>기록 수집 · 흐름도 · 대시보드</li>
             <li>평가 지표 19종 · 자동 개선 6종</li>
             <li>A/B 통계 판정</li>
@@ -851,10 +855,12 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
           </ul>
         </div>
         <div class="price-card neu-raised price-featured">
-          <div class="price-tier">Professional</div>
+          <div class="price-tier">Professional · EE</div>
           <div class="price-value text-pink">연 1,200만원</div>
-          <div class="price-license">워크스페이스 단위 · WDLAB Commercial</div>
+          <div class="price-license">SMB · 워크스페이스 단위 · SaaS</div>
           <ul class="price-feats">
+            <li><b>프로덕트 매니저(PM/PO)</b> — 실험 결과 · 비용 · 품질 추이를 의사결정에 활용</li>
+            <li><b>법무 · 감사 · 컴플라이언스</b> — AI 기본법 · 개인정보보호법 증빙 확보</li>
             <li>Community 전체 포함</li>
             <li>한국어 안전장치 8종 (이미지 포함)</li>
             <li>사실 오류(환각) 검증</li>
@@ -864,39 +870,49 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
           </ul>
         </div>
         <div class="price-card neu-raised">
-          <div class="price-tier">Compliance · Enterprise</div>
+          <div class="price-tier">Compliance · Enterprise · EE</div>
           <div class="price-value text-blue">연 3,600만원~</div>
-          <div class="price-license">법인 단위 · WDLAB Commercial</div>
+          <div class="price-license">중견 · 대기업 · 법인 단위 · SaaS</div>
           <ul class="price-feats">
+            <li><b>PM/PO + 법무 · 감사 · 컴플라이언스</b> — 전사 AI 서비스의 증빙 확보 · 검증</li>
             <li>Professional 전체 포함</li>
             <li>봉인 감사 기록 · 위변조 탐지</li>
             <li>AI 기본법 9개 조항 대응 · 월간 보고서 자동화</li>
             <li>영향평가 7항목 + 고영향 판별 · 증빙 ZIP</li>
             <li>계정 자동 연동 · 행위 감사 · 잊힐 권리</li>
-            <li>ISO 42001 · 27001 · ISMS-P 매핑 · 폐쇄망 구축 · 규제 자문</li>
+            <li>ISO 42001 · 27001 · ISMS-P 매핑 · 전용 구축 옵션 · 규제 자문</li>
           </ul>
         </div>
       </div>
-      <p class="pricing-note">※ 가격은 파일럿 실측 후 2027년 초 확정 예정인 초안입니다. 구축 · 유지보수 · 규제 자문은 별도 견적. 과태료 상한 3,000만원과 비교해 보십시오.</p>
+      <p class="pricing-note">※ Professional · Enterprise는 SaaS 구독(14일 체험 → 연 정액)으로 과금됩니다. 가격은 파일럿 실측 후 2027년 초 확정 예정인 초안이며 구축 · 유지보수 · 규제 자문은 별도 견적. 과태료 상한 3,000만원과 비교해 보십시오.</p>
     </section>
 
     <!-- ===== DIFFERENTIATORS ===== -->
     <section id="diff" class="section">
       <div class="section-head">
         <span class="section-tag">Comparison</span>
-        <h2>왜 <span class="text-blue">해외 도구</span>가 아니라 <span class="text-pink">WDLAB-LLMOps</span> 인가</h2>
+        <h2>왜 <span class="text-blue">글로벌 LLMOps 9종 · Dataiku · LRQA</span>가 아니라 <span class="text-pink">WDLAB-LLMOps</span> 인가</h2>
+        <p class="section-lead">
+          Opik · Langfuse · Galileo · Phoenix · Braintrust · Datadog · MLflow · Fiddler · Weave 등 글로벌 제품은 모두 SaaS로 서비스합니다.
+          셀프 테스트 기능을 가진 Dataiku도 SaaS이고, LRQA는 ISO 42001 컨설팅 기업입니다. WDLAB-LLMOps도 같은 SaaS 방식이지만, <b>한국 AI 기본법 대응은 유일</b>합니다.
+        </p>
       </div>
 
       <div class="compare neu-raised">
         <div class="compare-row compare-head">
           <div>차원</div>
-          <div>WDLAB-LLMOps</div>
-          <div>Opik / Langfuse 등</div>
+          <div>WDLAB-LLMOps (SaaS)</div>
+          <div>글로벌 9종 · Dataiku · LRQA</div>
+        </div>
+        <div class="compare-row">
+          <div>서비스 방식</div>
+          <div class="hi">SaaS + Community 오픈코어 자체 설치</div>
+          <div class="lo">SaaS (Datadog은 SaaS 전용) · LRQA는 컨설팅</div>
         </div>
         <div class="compare-row">
           <div>AI 기본법 대응</div>
           <div class="hi">제31조 · 제34조 직접 매핑 · 월간 보고서 · 증빙 ZIP</div>
-          <div class="lo">없음</div>
+          <div class="lo">9종 모두 없음 · LRQA는 컨설팅(도구 없음)</div>
         </div>
         <div class="compare-row">
           <div>결과 도출 기준 설명 (§34②)</div>
@@ -905,18 +921,18 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
         </div>
         <div class="compare-row">
           <div>ISO 42001 · 27001 · ISMS-P</div>
-          <div class="hi">통제 항목 매핑 보고서 자동 생성</div>
-          <div class="lo">없음 (SOC2 중심)</div>
+          <div class="hi">통제 항목 매핑 보고서를 도구가 자동 생성</div>
+          <div class="lo">SOC2 중심 · LRQA는 ISO 42001 인증 컨설팅</div>
         </div>
         <div class="compare-row">
-          <div>AI 서비스 품질 진단</div>
-          <div class="hi">5단계 진단 · 4축 점수 · 보고서</div>
-          <div class="lo">없음</div>
+          <div>AI 서비스 품질 진단 (셀프 테스트)</div>
+          <div class="hi">5단계 자동 진단 · 4축 점수 · 봉인 기록 연동 보고서</div>
+          <div class="lo">Dataiku만 셀프 테스트 보유 · 9종은 없음</div>
         </div>
         <div class="compare-row">
           <div>데이터 위치</div>
-          <div class="hi">100% 회사 내부 · 외부 AI 차단 기본값</div>
-          <div class="lo">클라우드 SaaS 또는 혼합</div>
+          <div class="hi">국내 리전 상주 · 외부 AI 차단 · 폐쇄망은 Community</div>
+          <div class="lo">해외 리전 중심 (US · EU · JP)</div>
         </div>
         <div class="compare-row">
           <div>한국어 안전장치</div>
@@ -1041,7 +1057,7 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
           </div>
           <div>
             <div class="brand-title">WDLAB-LLMOps</div>
-            <div class="brand-subtitle">관측 · 평가 · 최적화 · 통제 · 증빙</div>
+            <div class="brand-subtitle">SaaS · Open Core · 관측 · 평가 · 최적화 · 통제 · 증빙</div>
           </div>
         </div>
         <div class="footer-meta">
