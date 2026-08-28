@@ -25,7 +25,7 @@ Diagnosis·EE 품질 진단 보고서)에서 소비자가 이해하기 쉬운 �
 | 규제 기관 대응 | 과기정통부 · AISI · NIA · PIPC · MOIS · MCST 사실조사·점검 시 증빙 ZIP 제출. |
 | 서비스 방식 | v2.0 Open Core = SaaS. Community(무료·Apache-2.0·자체 설치) / Professional(EE·SMB) / Compliance·Enterprise(EE·중견·대기업) 3 에디션. |
 | 대상 사용자 | Community: AI·백엔드 개발자, MLOps·플랫폼 운영자. Professional·Enterprise: PM/PO, 법무·감사·컴플라이언스 담당자 (과금). |
-| 경쟁 구도 | 글로벌 LLMOps 9종 · Dataiku(셀프 테스트) 모두 SaaS, LRQA는 ISO 42001 컨설팅 — 한국 AI 기본법 대응은 WDLAB 유일. |
+| 경쟁 구도 | 글로벌 LLMOps 9종 · Dataiku(셀프 테스트·Gartner 리더·고가) 모두 SaaS, LRQA는 ISO 42001 공인 인증 발급 기관(보완 파트너) — 한국 AI 기본법 대응은 WDLAB 유일. 근거: `WDLAB_vs_글로벌_LLMOps_9종_비교표.xlsx`, `Dataiku_vs_LRQA_vs_WDLAB-LLMOps_비교표.xlsx`. |
 | 멀티 에이전트 | LangGraph · CrewAI · AutoGen 등 39개 프레임워크를 Maestro 5계층 DAG로 표준화. |
 | Zero-Cost 추론 | Ollama · vLLM 기반 로컬 모델 운영, 외부 LLM 호출 prefix block. |
 | 무결성 봉인 | WORM Append-only + HMAC-SHA256 Merkle 체인. 변조 즉시 탐지. |

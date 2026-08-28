@@ -894,7 +894,9 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
         <h2>왜 <span class="text-blue">글로벌 LLMOps 9종 · Dataiku · LRQA</span>가 아니라 <span class="text-pink">WDLAB-LLMOps</span> 인가</h2>
         <p class="section-lead">
           Opik · Langfuse · Galileo · Phoenix · Braintrust · Datadog · MLflow · Fiddler · Weave 등 글로벌 제품은 모두 SaaS로 서비스합니다.
-          셀프 테스트 기능을 가진 Dataiku도 SaaS이고, LRQA는 ISO 42001 컨설팅 기업입니다. WDLAB-LLMOps도 같은 SaaS 방식이지만, <b>한국 AI 기본법 대응은 유일</b>합니다.
+          셀프 테스트를 갖춘 <b>Dataiku</b>(Gartner AI 플랫폼 리더)도 SaaS이지만 고가·복잡하고 한국 규제에 대응하지 않습니다.
+          <b>LRQA</b>는 ISO 42001 공인 인증서를 발급하는 사람 주도 심사 기관으로, 소프트웨어가 아니라 WDLAB의 <b>보완 파트너</b>입니다
+          (WDLAB이 증빙을 자동 생성 → LRQA가 심사·인증). WDLAB-LLMOps는 같은 SaaS 방식에 <b>한국 AI 기본법 대응을 유일하게 내장</b>했습니다.
         </p>
       </div>
 
@@ -907,12 +909,22 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
         <div class="compare-row">
           <div>서비스 방식</div>
           <div class="hi">SaaS + Community 오픈코어 자체 설치</div>
-          <div class="lo">SaaS (Datadog은 SaaS 전용) · LRQA는 컨설팅</div>
+          <div class="lo">SaaS (Datadog은 SaaS 전용) · Dataiku SaaS+자체 설치 · LRQA는 사람 주도 심사 용역</div>
+        </div>
+        <div class="compare-row">
+          <div>공인 인증서 발급</div>
+          <div class="hi">불가 — 대신 인증 심사에 쓰는 증빙 · 통제 매핑을 자동 생성</div>
+          <div class="lo">LRQA만 가능 (ISO 42001 · 27001 공인 심사) · 9종 · Dataiku 불가</div>
+        </div>
+        <div class="compare-row">
+          <div>감사 · 보증 방식</div>
+          <div class="hi">상시 · 자동 · 재현 가능한 진단과 봉인 기록</div>
+          <div class="lo">LRQA는 비정기 · 수기 심사보고서 · Dataiku는 거버넌스 리포트</div>
         </div>
         <div class="compare-row">
           <div>AI 기본법 대응</div>
           <div class="hi">제31조 · 제34조 직접 매핑 · 월간 보고서 · 증빙 ZIP</div>
-          <div class="lo">9종 모두 없음 · LRQA는 컨설팅(도구 없음)</div>
+          <div class="lo">9종 · Dataiku 모두 없음 · LRQA는 자문·심사(도구 없음)</div>
         </div>
         <div class="compare-row">
           <div>결과 도출 기준 설명 (§34②)</div>
@@ -922,12 +934,12 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
         <div class="compare-row">
           <div>ISO 42001 · 27001 · ISMS-P</div>
           <div class="hi">통제 항목 매핑 보고서를 도구가 자동 생성</div>
-          <div class="lo">SOC2 중심 · LRQA는 ISO 42001 인증 컨설팅</div>
+          <div class="lo">SOC2 중심 · Dataiku 부분 지원 · LRQA는 인증 주체</div>
         </div>
         <div class="compare-row">
           <div>AI 서비스 품질 진단 (셀프 테스트)</div>
           <div class="hi">5단계 자동 진단 · 4축 점수 · 봉인 기록 연동 보고서</div>
-          <div class="lo">Dataiku만 셀프 테스트 보유 · 9종은 없음</div>
+          <div class="lo">Dataiku만 셀프 테스트 보유(범용 ML) · 9종은 없음 · LRQA는 사람이 평가</div>
         </div>
         <div class="compare-row">
           <div>데이터 위치</div>
@@ -955,9 +967,14 @@ implementation "ai.wdlab:llmops" # Java</code></pre>
           <div class="lo">단순 평균 차이</div>
         </div>
         <div class="compare-row">
-          <div>라이선스</div>
-          <div class="hi">오프라인 키 · 사용량 전송 없음 · 사용자 무제한</div>
-          <div class="lo">사용량 · 사용자 수 과금</div>
+          <div>가격 · 대상</div>
+          <div class="hi">무료 ~ 연 3,600만원~ 3 에디션 · 사용자 무제한 · SMB부터 진입</div>
+          <div class="lo">9종 사용량·사용자 과금 · Dataiku 고가 연간 계약(대기업) · LRQA 용역 과금</div>
+        </div>
+        <div class="compare-row">
+          <div>범용 데이터과학 · AutoML</div>
+          <div class="lo" style="color:var(--text-3)">미지원 — LLM · 에이전트 서비스 운영에 집중</div>
+          <div class="hi">Dataiku 강점 (데이터 준비 · ML 파이프라인 · BI)</div>
         </div>
         <div class="compare-row">
           <div>잊힐 권리</div>
