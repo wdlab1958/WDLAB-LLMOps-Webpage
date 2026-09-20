@@ -2,10 +2,16 @@
 
 **Self-Hosted Open Core LLMOps Platform** 소개 웹페이지이자 서비스 이용자 대문(Gateway)입니다.
 LLM과 AI 에이전트 서비스를 **관측 · 평가 · 최적화 · 통제 · 증빙**하는 클라우드 SaaS 서비스
-**WDLAB-LLMOps v2.0 (Open Core · Phase 21~30 구현 완료, 2026-08)** 을, **2027년 1월 22일 AI 기본법
+**WDLAB-LLMOps v2.0 (Open Core · Phase 21~39 + 설명·감사 신뢰성 강화, 2026-09-20)** 을, **2027년 1월 22일 AI 기본법
 계도기간 종료**에 대비하는 관점(제34조 고영향 AI 사업자 책무 · ISO 42001/27001 거버넌스 ·
 Diagnosis·EE 품질 진단 보고서)에서 소비자가 이해하기 쉬운 언어로 소개합니다.
 
+> **2026-09-20**: 원본 프로젝트 최신 동기화 — ① "설명의 정직성" 섹션 신설(입력 기여 **실측**(섭동 귀인·중복 근거 대리모형) ·
+> **증거 등급**(사실·증언·사후 실험) · 등급/서명의 **서버 부여** · 조직당 기록 사슬 하나 · 일일 외부 봉인 · 위협 모델 공개 · 장애 주입 시험)
+> ② "위·변조 즉시 탐지" 류의 과장 문구를 실제 보증 범위(서명 열쇠가 없는 자의 변조 탐지 + 열쇠 보유 내부자는 일일 외부 봉인으로 방어)로 정정
+> ③ 진단 심화(Phase 37~39: 안전 공격 19종 · 보고서 Ed25519 전자서명 · 진단→개선→재진단 · MCP/A2A · 영문 + EU AI Act)
+> ④ 수치 현행화 — API **231** · 자동 시험 **539** · 통합·E2E **28/28** · 장애 주입 **32/32** · PG V029 · CH V008. 디자인·구성은 유지.
+>
 > 2026-08-28: Phase 21~30(SSO·RBAC·SCIM·멀티테넌시·라이선스·빌링·행위 감사·진단 엔진·AI 기본법 패키지) 구현 완료 반영. 원본 프로젝트 v2.0 기준 내용 동기화. 디자인·구성은 유지하고 본문을 압축,
 > AI 전문용어를 줄이고 제34조 ② "결과 도출 기준 설명" 대응을 핵심 메시지로 재구성.
 
@@ -28,8 +34,8 @@ Diagnosis·EE 품질 진단 보고서)에서 소비자가 이해하기 쉬운 �
 | 경쟁 구도 | 글로벌 LLMOps 9종 · Dataiku(셀프 테스트·Gartner 리더·고가) 모두 SaaS, LRQA는 ISO 42001 공인 인증 발급 기관(보완 파트너) — 한국 AI 기본법 대응은 WDLAB 유일. 근거: `WDLAB_vs_글로벌_LLMOps_9종_비교표.xlsx`, `Dataiku_vs_LRQA_vs_WDLAB-LLMOps_비교표.xlsx`. |
 | 멀티 에이전트 | LangGraph · CrewAI · AutoGen 등 47개 프레임워크를 Maestro 5계층 DAG로 표준화. |
 | Zero-Cost 추론 | Ollama · vLLM 기반 로컬 모델 운영, 외부 LLM 호출 prefix block. |
-| 무결성 봉인 | WORM Append-only + HMAC-SHA256 Merkle 체인. 변조 즉시 탐지. |
-| XAI 5계층 | Raw → Feature → Natural Language → Visual → Actionable. `/explain` API. |
+| 무결성 봉인 | WORM Append-only + 서버 서명 HMAC-SHA256 체인(조직당 하나). 서명 열쇠가 없는 자의 변조 탐지 + 열쇠 보유 내부자 대비 **일일 외부 봉인(별도 Ed25519)**. 보증 범위 공개. |
+| 설명의 정직성 | 근사 attention 그림 폐기 → 입력을 빼 보고 재실행하는 **기여 실측**(잡음 한계 · 중복 근거 대리모형 · 충실도 검사). 모든 기록에 **증거 등급**(사실 · AI의 증언 · 사후 실험 · 사람 진술 · 미분류), 등급은 서버가 부여(자칭 불가). |
 
 ## 대문(Gateway) 구성
 
@@ -46,7 +52,7 @@ Diagnosis·EE 품질 진단 보고서)에서 소비자가 이해하기 쉬운 �
 2. **Evaluation** — 19 Metrics (Heuristic 9 / LLM-Judge 7 / Korean 3) · A/B Diff · t-test 유의성
 3. **Optimization** — GEPA · MetaPrompt · HRPO · Pareto Frontier
 4. **Guardrails** — 한국어 가드레일 8종 · KoreanPII 9패턴 · Injection 15패턴 · Vision PII
-5. **Transparency** — AI 기본법 §31·§34 · WORM Ledger · Decision Basis · Monthly Report
+5. **Transparency** — AI 기본법 §31·§34 · WORM Ledger · Decision Basis(증거 등급) · Monthly Report
 
 ## Phase 13~24 신규 역량 (v1.4)
 

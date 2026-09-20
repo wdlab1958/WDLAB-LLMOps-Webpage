@@ -88,8 +88,11 @@
   // ---------- Animated counters ----------
   const counters = document.querySelectorAll('.stat-number');
   const animate = (el) => {
-    const target = parseInt(el.textContent, 10);
-    if (isNaN(target)) return;
+    // 순수 정수 카드만 카운트업 — "2027.1.22" · "3,000만원" 같은 값은 parseInt 가 앞자리만 읽어
+    // 애니메이션 후 "2027" · "3" 으로 바뀌던 결함 수정 (2026-09-20)
+    const raw = el.textContent.trim();
+    if (!/^\d+$/.test(raw)) return;
+    const target = parseInt(raw, 10);
     const duration = 1100;
     const start = performance.now();
     const tick = (now) => {
