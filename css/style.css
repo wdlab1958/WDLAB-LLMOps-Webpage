@@ -891,3 +891,37 @@ code { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; padding: 2px
 /* v2.0 · AI 기본법 강조 — 긴 수치용 소형 스탯 · 규제기관 링크 */
 .stat-number.stat-sm { font-size: 28px; line-height: 1.35; }
 .law-desc a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Diagnosis Portfolio — Control Tower 예시 표 (4축 히트맵) */
+.pf { margin-top: 32px; padding: 24px 28px; }
+.pf-caption { font-size: 12px; color: var(--text-3); margin-bottom: 14px; }
+.pf-scroll { overflow-x: auto; }
+.pf-table { width: 100%; min-width: 760px; border-collapse: separate; border-spacing: 0 4px; font-size: 13.5px; }
+.pf-table th {
+  padding: 10px 12px; text-align: left; font-size: 12px; font-weight: 700;
+  color: var(--text-1); letter-spacing: 0.03em; white-space: nowrap;
+}
+.pf-table td { padding: 10px 12px; color: var(--text-2); white-space: nowrap; }
+.pf-table .c { text-align: center; }
+.pf-table .pf-name { font-weight: 700; color: var(--led-blue); }
+.pf-table .pf-grade { font-weight: 800; color: var(--text-3); }
+.pf-table .g-a { color: #16A34A; }
+.pf-table .g-b { color: #65A30D; }
+.pf-table .g-d { color: #EA580C; }
+.pf-table .pf-crit { color: #DC2626; font-weight: 700; }
+.pf-table .pf-high { color: #EA580C; font-weight: 600; }
+.pf-table td[class*="h-"] { color: var(--text-1); font-weight: 600; }
+.h-a { background: #BBF7D0; }
+.h-b { background: #D9F99D; }
+.h-c { background: #FDE68A; }
+.h-d { background: #FED7AA; }
+.h-f { background: #FECACA; }
+.h-n { background: #DDE2EA; }
+.pf-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 16px; font-size: 12px; color: var(--text-2); }
+.pf-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.pf-legend i { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+.feat-card p a { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 720px) {
+  .pf { padding: 18px 16px; }
+}
+.law-banner + .grid-cards, .pf + .grid-cards { margin-top: 28px; }

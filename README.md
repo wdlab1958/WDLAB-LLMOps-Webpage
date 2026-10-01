@@ -6,7 +6,13 @@ LLM과 AI 에이전트 서비스를 **관측 · 평가 · 최적화 · 통제 ·
 계도기간 종료**에 대비하는 관점(제34조 고영향 AI 사업자 책무 · ISO 42001/27001 거버넌스 ·
 Diagnosis·EE 품질 진단 보고서)에서 소비자가 이해하기 쉬운 언어로 소개합니다.
 
-> **2026-09-20**: 원본 프로젝트 최신 동기화 — ① "설명의 정직성" 섹션 신설(입력 기여 **실측**(섭동 귀인·중복 근거 대리모형) ·
+> **2026-10-01**: 워크스페이스 **Diagnosis · EE** 메뉴의 두 화면을 전용 섹션으로 신설 — ① **Diagnosis — AI 서비스 품질 진단**(5단계 흐름 ·
+> 대상 등록 · fresh/reuse 모드 · 공격 팩 v1.0 15종 / v1.1 19종(OWASP LLM Top 10 2025) · 실행 모니터/취소 · DEMO/SIMULATED 표시 ·
+> 4축 스코어카드와 등급 상한 · 발견사항 → 개선 지시문 · diff/추이 · 한·영 서명 보고서 · 정기 진단)
+> ② **Diagnosis Portfolio — Control Tower**(법인 단위 4축 히트맵 예시 표 · 종합 등급 · 미해결 CRITICAL/HIGH · 배포 게이트 · 미진단 경과일).
+> 기존 "v2.0 Open Core" 섹션의 진단 카드 4장은 요약 1장으로 줄이고 새 섹션으로 연결. 사이드바 · 요금제 · 비교표에 반영.
+>
+> 2026-09-20: 원본 프로젝트 최신 동기화 — ① "설명의 정직성" 섹션 신설(입력 기여 **실측**(섭동 귀인·중복 근거 대리모형) ·
 > **증거 등급**(사실·증언·사후 실험) · 등급/서명의 **서버 부여** · 조직당 기록 사슬 하나 · 일일 외부 봉인 · 위협 모델 공개 · 장애 주입 시험)
 > ② "위·변조 즉시 탐지" 류의 과장 문구를 실제 보증 범위(서명 열쇠가 없는 자의 변조 탐지 + 열쇠 보유 내부자는 일일 외부 봉인으로 방어)로 정정
 > ③ 진단 심화(Phase 37~39: 안전 공격 19종 · 보고서 Ed25519 전자서명 · 진단→개선→재진단 · MCP/A2A · 영문 + EU AI Act)
@@ -27,7 +33,8 @@ Diagnosis·EE 품질 진단 보고서)에서 소비자가 이해하기 쉬운 �
 | 왜 지금 | 2027.01.22 계도기간 종료 → 제34조 위반 시 과태료 3천만원 이하. 금융·증권·물류·판매 AI 서비스가 대상. |
 | 제34조 4대 책무 | ① 위험관리 ② **결과 도출 기준 설명(핵심)** ③ 이용자 보호 ④ 책임자 지정·공시 — 운영 중 자동 증빙. |
 | ISO 42001 · 27001 | 영향평가·모델 카드·행위 감사를 국제 표준 통제 항목에 매핑, 인증 심사 증거로 재사용. |
-| Diagnosis · EE | 5단계 품질 진단 → 4축 스코어카드(품질·안전·준수·성능) → 봉인 기록 연동 보고서(DOCX/PDF). |
+| Diagnosis · EE | 5단계 품질 진단 → 4축 스코어카드(품질·안전·준수·성능) → 봉인 기록 연동 서명 보고서(MD/DOCX/PDF · 한·영). 공격 팩 v1.1 19종, fresh/reuse, DEMO 표시, 정기 진단. |
+| Portfolio · Control Tower | 법인 단위 전 진단 대상의 4축 히트맵 · 종합 등급 · 미해결 CRITICAL/HIGH · 배포 게이트(CI 연동) · 미진단 경과일 (Enterprise). |
 | 규제 기관 대응 | 과기정통부 · AISI · NIA · PIPC · MOIS · MCST 사실조사·점검 시 증빙 ZIP 제출. |
 | 서비스 방식 | v2.0 Open Core = SaaS. Community(무료·Apache-2.0·자체 설치) / Professional(EE·SMB) / Compliance·Enterprise(EE·중견·대기업) 3 에디션. |
 | 대상 사용자 | Community: AI·백엔드 개발자, MLOps·플랫폼 운영자. Professional·Enterprise: PM/PO, 법무·감사·컴플라이언스 담당자 (과금). |
@@ -96,8 +103,8 @@ EE 활성 시 223 API paths / 비활성 시 Community degrade.
 | 티어 | 가격 | 범위 |
 |---|---|---|
 | Community | 무료 (Apache-2.0) | 트레이싱 · 평가 19종 · A/B 유의성 · SDK 3종 · IDE 2종 |
-| Professional | 연 1,200만원 / 워크스페이스 | + 가드레일 8종 · 온톨로지 검증 · RBAC · SSO · 진단 엔진 |
-| Compliance · Enterprise | 연 3,600만원~ / 법인 | + WORM·머클 · AI 기본법 9개 조항 · SCIM · RTBF · 규제 자문 |
+| Professional | 연 1,200만원 / 워크스페이스 | + 가드레일 8종 · 온톨로지 검증 · RBAC · SSO · 진단 엔진(Diagnosis) |
+| Compliance · Enterprise | 연 3,600만원~ / 법인 | + WORM·머클 · AI 기본법 9개 조항 · 진단 포트폴리오(Control Tower) · SCIM · RTBF · 규제 자문 |
 
 원칙: 좌석 과금 없음 · 폐쇄망/로컬 LLM 무료 유지 · v1.4.x Apache-2.0 영구 동결.
 
@@ -107,7 +114,7 @@ EE 활성 시 223 API paths / 비활성 시 Community degrade.
 
 ```
 WDLAB-LLMOps_Webpage/
-├── index.html        # 단일 페이지 진입점 (사이드바 + Gateway + 17개 섹션)
+├── index.html        # 단일 페이지 진입점 (사이드바 + Gateway + 20개 섹션)
 ├── css/
 │   └── style.css     # 뉴모피즘 디자인 시스템 (+ Gateway · Pricing · 모바일 메뉴)
 ├── js/
