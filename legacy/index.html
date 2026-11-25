@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WDLAB-LLMOps · AI 기본법 대비 SaaS 운영 플랫폼</title>
+<meta name="description" content="WDLAB-LLMOps v2.0 Open Core는 LLM·AI 에이전트 서비스를 관측·평가·최적화·통제·증빙하는 클라우드 SaaS 서비스입니다. Community(무료·자체 설치) / Professional(EE·SMB) / Compliance·Enterprise(EE·중견·대기업) 3개 에디션. 2027년 1월 22일 AI 기본법 계도기간 종료에 대비해 고영향 AI 사업자 책무(제34조), ISO 42001·27001 거버넌스, AI 서비스 품질 진단 보고서를 자동으로 준비합니다." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <button id="menuToggle" class="menu-toggle" aria-label="메뉴 열기">
+    <span></span><span></span><span></span>
+  </button>
+  <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+  <!-- ============== SIDEBAR ============== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-logo neu-pressed">
+        <span class="led led-blue"></span>
+        <span class="led led-pink"></span>
+      </div>
+      <div class="brand-text">
+        <div class="brand-title">WDLAB</div>
+        <div class="brand-subtitle">LLMOps v2.0 Open Core</div>
+      </div>
+    </div>
+
+    <nav class="nav-sections">
+      <div class="nav-group">
+        <div class="nav-label">시작</div>
+        <a class="nav-item active" href="#hero" data-target="hero"><i class="dot"></i><span>홈 · 개요</span></a>
+        <a class="nav-item" href="#gateway" data-target="gateway"><i class="dot dot-blue"></i><span>플랫폼 접속 · Quick Start</span></a>
+        <a class="nav-item" href="#projects" data-target="projects"><i class="dot"></i><span>왜 지금 필요한가</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Observability · 관측</div>
+        <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>Dashboards</span></a>
+        <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>Logs · Traces</span></a>
+        <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>Trace Detail</span></a>
+        <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>Threads View</span></a>
+        <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>DAG Flow</span></a>
+        <a class="nav-item" href="#observability" data-target="observability"><i class="dot dot-blue"></i><span>End-to-End Flow</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Development · 개발</div>
+        <a class="nav-item" href="#development" data-target="development"><i class="dot dot-pink"></i><span>Agent Playground</span></a>
+        <a class="nav-item" href="#development" data-target="development"><i class="dot dot-pink"></i><span>Prompt Playground</span></a>
+        <a class="nav-item" href="#development" data-target="development"><i class="dot dot-pink"></i><span>Agent Configuration</span></a>
+        <a class="nav-item" href="#development" data-target="development"><i class="dot dot-pink"></i><span>Optimization Runs</span></a>
+        <a class="nav-item" href="#development" data-target="development"><i class="dot dot-pink"></i><span>Prompts</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Evaluation · 평가</div>
+        <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Test Suites</span></a>
+        <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Datasets</span></a>
+        <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Experiments</span></a>
+        <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Annotation Queues</span></a>
+        <a class="nav-item" href="#evaluation" data-target="evaluation"><i class="dot dot-blue"></i><span>Metrics Catalog</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Production · 운영</div>
+        <a class="nav-item" href="#production" data-target="production"><i class="dot dot-pink"></i><span>Online Evaluation</span></a>
+        <a class="nav-item" href="#production" data-target="production"><i class="dot dot-pink"></i><span>Alerts</span></a>
+        <a class="nav-item" href="#production" data-target="production"><i class="dot dot-pink"></i><span>Guardrails</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Diagnosis · EE</div>
+        <a class="nav-item" href="#diagnosis" data-target="diagnosis"><i class="dot dot-pink"></i><span>Diagnosis · 품질 진단</span></a>
+        <a class="nav-item" href="#portfolio" data-target="portfolio"><i class="dot dot-pink"></i><span>Portfolio · Control Tower</span></a>
+        <a class="nav-item" href="#enterprise" data-target="enterprise"><i class="dot dot-pink"></i><span>AI 기본법 패키지</span></a>
+        <a class="nav-item" href="#enterprise" data-target="enterprise"><i class="dot dot-pink"></i><span>SSO · RBAC · 행위 감사</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Compliance · AI 기본법</div>
+        <a class="nav-item" href="#compliance" data-target="compliance"><i class="dot dot-blue"></i><span>제34조 4대 책무</span></a>
+        <a class="nav-item" href="#compliance" data-target="compliance"><i class="dot dot-blue"></i><span>ISO 42001 · 27001</span></a>
+        <a class="nav-item" href="#compliance" data-target="compliance"><i class="dot dot-blue"></i><span>Transparency · Auditor</span></a>
+        <a class="nav-item" href="#explain" data-target="explain"><i class="dot dot-blue"></i><span>설명의 정직성 · 증거 등급</span></a>
+        <a class="nav-item" href="#compliance" data-target="compliance"><i class="dot dot-blue"></i><span>규제 기관 대응</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Platform Evolution</div>
+        <a class="nav-item" href="#upgrades" data-target="upgrades"><i class="dot dot-pink"></i><span>v1.4 · Phase 13~24</span></a>
+        <a class="nav-item" href="#ops14x" data-target="ops14x"><i class="dot dot-pink"></i><span>v1.4.x 운영 강화</span></a>
+        <a class="nav-item" href="#enterprise" data-target="enterprise"><i class="dot dot-pink"></i><span>v2.0 Open Core (21~39)</span></a>
+        <a class="nav-item" href="#explain" data-target="explain"><i class="dot dot-pink"></i><span>2026.09 설명 · 감사 신뢰성</span></a>
+        <a class="nav-item" href="#pricing" data-target="pricing"><i class="dot dot-pink"></i><span>에디션 · 요금제</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">System</div>
+        <a class="nav-item" href="#system" data-target="system"><i class="dot"></i><span>Settings</span></a>
+        <a class="nav-item" href="#architecture" data-target="architecture"><i class="dot"></i><span>Architecture</span></a>
+        <a class="nav-item" href="#roadmap" data-target="roadmap"><i class="dot"></i><span>Roadmap</span></a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer neu-pressed">
+      <div class="status-led"><span class="pulse"></span> SaaS · Open Core · 3 Editions</div>
+    </div>
+  </aside>
+
+  <!-- ============== MAIN ============== -->
+  <main class="content">
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="section section-hero">
+      <div class="hero-meta">
+        <span class="chip neu-pressed">SaaS · Open Core · 3 에디션</span>
+        <span class="chip neu-pressed">AI 기본법 제31조 · 제34조 대비</span>
+        <span class="chip neu-pressed">⏳ 계도기간 종료 2027.01.22</span>
+        <span class="chip neu-pressed">v2.0 · Phase 21~39 + 설명·감사 신뢰성 강화 · 2026.09</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="text-gradient-blue">WDLAB</span><span class="text-gradient-pink">-LLMOps</span>
+      </h1>
+      <p class="hero-tagline">
+        LLM · AI 에이전트 서비스를 <b>관측 · 평가 · 최적화 · 통제 · 증빙</b>하는<br/>
+        <b>클라우드 서버에서 제공하는 SaaS 서비스</b> — 회원 가입만으로 시작하고, AI가 왜 그런 답을 냈는지 <b>추정이 아닌 측정과 기록으로</b> 감사인 앞에서 증명합니다.
+      </p>
+
+      <div class="hero-cta">
+        <button class="btn-neu btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+          <span>왜 지금 필요한가 →</span>
+        </button>
+        <button class="btn-neu" onclick="document.getElementById('compliance').scrollIntoView({behavior:'smooth'})">
+          <span>제34조 4대 책무 대응</span>
+        </button>
+        <button class="btn-neu" onclick="document.getElementById('gateway').scrollIntoView({behavior:'smooth'})">
+          <span>서비스 가입 · 시작하기</span>
+        </button>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card neu-raised">
+          <div class="stat-number stat-sm text-pink">2027.1.22</div>
+          <div class="stat-label">AI 기본법 계도기간 종료</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number stat-sm text-blue">3,000만원</div>
+          <div class="stat-label">위반 시 과태료 상한</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-pink">4</div>
+          <div class="stat-label">고영향 AI 사업자 책무</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-blue">2</div>
+          <div class="stat-label">ISO 42001 · 27001 매핑</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-pink">231</div>
+          <div class="stat-label">API 기능 (EE 포함)</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-blue">47</div>
+          <div class="stat-label">지원 에이전트 프레임워크</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-pink">19</div>
+          <div class="stat-label">품질 평가 지표</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-blue">8</div>
+          <div class="stat-label">한국어 안전장치</div>
+        </div>
+      </div>
+
+      <div class="hero-proof">
+        <span class="chip neu-pressed">✅ 통합·E2E 시험 28/28 통과</span>
+        <span class="chip neu-pressed">🤖 에이전트 시험 10/10 통과</span>
+        <span class="chip neu-pressed">🧪 자동 시험 539건 통과</span>
+        <span class="chip neu-pressed">🌪 장애 주입 시험 32/32 통과</span>
+        <span class="chip neu-pressed">🔒 국내 리전 데이터 상주 · 외부 AI 미사용</span>
+      </div>
+    </section>
+
+    <!-- ===== GATEWAY / QUICK ACCESS ===== -->
+    <section id="gateway" class="section">
+      <div class="section-head">
+        <span class="section-tag">Gateway</span>
+        <h2>플랫폼으로 <span class="text-blue">바로 들어가기</span></h2>
+        <p class="section-lead">
+          <b>Professional · Enterprise</b>는 가입 → 조직 생성 → API Key 발급 → <b>14일 무료 체험</b>으로 바로 시작하는 SaaS입니다.
+          <b>Community</b>는 오픈소스를 내려받아 자체 서버에 설치합니다.
+        </p>
+      </div>
+
+      <div class="gateway-grid">
+        <a class="gw-card neu-raised card-hover" href="http://localhost:18090/" target="_blank" rel="noopener">
+          <div class="gw-icon neu-pressed"><span class="ico-blue">🖥</span></div>
+          <h3>SaaS 서비스 접속 · 가입</h3>
+          <p>대시보드 · 기록 · 평가 · 안전장치 · 증빙을 한 화면에서. 가입 즉시 14일 체험.</p>
+          <span class="gw-link">Workspace 로그인 →</span>
+        </a>
+        <a class="gw-card neu-raised card-hover" href="http://localhost:18080/docs" target="_blank" rel="noopener">
+          <div class="gw-icon neu-pressed"><span class="ico-pink">📘</span></div>
+          <h3>API 문서 (Swagger)</h3>
+          <p>내 서비스를 연결하는 데 필요한 모든 기능을 브라우저에서 확인.</p>
+          <span class="gw-link">API Docs →</span>
+        </a>
+        <a class="gw-card neu-raised card-hover" href="https://github.com/wdlab1958" target="_blank" rel="noopener">
+          <div class="gw-icon neu-pressed"><span class="ico-blue">⌥</span></div>
+          <h3>Community 오픈소스</h3>
+          <p>Apache-2.0 소스 · 자체 설치 가이드 · 사용자 매뉴얼 · 릴리스 노트.</p>
+          <span class="gw-link">GitHub →</span>
+        </a>
+      </div>
+
+      <div class="quickstart neu-raised">
+        <div class="qs-head">
+          <span class="qs-title">⚡ Quick Start — Community 자체 설치 (5분)</span>
+          <span class="qs-sub">SaaS 이용자는 1·2단계 없이 3단계(연결)만 하면 됩니다</span>
+        </div>
+        <div class="qs-steps">
+          <div class="qs-step">
+            <div class="qs-num neu-pressed">1</div>
+            <div class="qs-body">
+              <div class="qs-label">저장소 기동</div>
+              <pre class="qs-code neu-pressed"><code>cp .env.example .env
+make infra-up          # ClickHouse · PostgreSQL · Redis · MinIO · Ollama</code></pre>
+            </div>
+          </div>
+          <div class="qs-step">
+            <div class="qs-num neu-pressed">2</div>
+            <div class="qs-body">
+              <div class="qs-label">플랫폼 기동</div>
+              <pre class="qs-code neu-pressed"><code>./Run_llmops.sh start  # Backend :18080 + Frontend :18090</code></pre>
+            </div>
+          </div>
+          <div class="qs-step">
+            <div class="qs-num neu-pressed">3</div>
+            <div class="qs-body">
+              <div class="qs-label">서비스에 연결</div>
+              <pre class="qs-code neu-pressed"><code>pip install wdlab-llmops        # Python
+npm i @wdlab/llmops             # TypeScript
+implementation "ai.wdlab:llmops" # Java</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHY NOW / IDENTITY ===== -->
+    <section id="projects" class="section">
+      <div class="section-head">
+        <span class="section-tag">Why Now</span>
+        <h2>2027년 1월 22일, <span class="text-pink">AI 기본법</span> 계도기간이 끝납니다</h2>
+        <p class="section-lead">
+          증권 · 투자 · 금융 · 물류 · 판매 등 이미 수많은 기업이 AI로 고객에게 답하고, 추천하고, 결정합니다.
+          계도기간이 끝나면 <b>고영향 AI 사업자 책무(제34조)</b>를 지키지 못한 사업자에게
+          <b>3천만원 이하 과태료</b>가 부과됩니다. WDLAB-LLMOps는 바로 이 지점에서 출발했습니다.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-pink">⚖</span></div>
+          <h3>가장 어려운 의무 — "결과 도출 기준 설명"</h3>
+          <p>제34조 ②는 AI가 <b>왜 그 답을 냈는지</b> 설명하라고 합니다. 그런데 AI는 같은 질문에도 매번 다른 답을 내고, 그 과정은 보이지 않습니다. 기록해 두지 않으면 설명할 수 없습니다.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-blue">📼</span></div>
+          <h3>모든 답변의 근거를 자동 기록</h3>
+          <p>질문 · 답변 · 사용 모델 · 참고 자료 · 판단 이유를 요청마다 한국어로 남기고, 각 기록이 <b>시스템이 남긴 사실인지 · AI가 쓴 설명인지 · 사후 실험 결과인지</b> 등급으로 구분합니다. 나중에 <b>같은 조건으로 다시 실행</b>해 결과를 비교할 수도 있습니다.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-pink">▣</span></div>
+          <h3>고칠 수 없는 증거</h3>
+          <p>기록은 덧붙이기만 가능하고 지울 수 없으며, 서버가 직접 서명해 사슬로 잇습니다. 서명 열쇠가 없는 사람의 위·변조는 검증에서 드러나고, <b>열쇠를 가진 내부자에 대비해 매일 별도 열쇠로 봉인 요약</b>을 남깁니다. 무엇을 보증하고 무엇을 보증하지 않는지도 문서로 공개합니다.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-blue">🩺</span></div>
+          <h3>서비스 품질 진단 보고서</h3>
+          <p>운영 중인 AI 서비스를 진단해 <b>품질 · 안전 · 규제 준수 · 성능</b> 4개 축 점수와 등급을 매기고, 보고서(DOCX/PDF)를 자동 생성합니다.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-pink">🏛</span></div>
+          <h3>국제 표준과 한 몸</h3>
+          <p>ISO 42001(AI 경영시스템) · ISO 27001(정보보호) 항목에 플랫폼 기능을 직접 대응시켜, 인증 심사와 규제 점검에 같은 증거를 씁니다.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-blue">⌘</span></div>
+          <h3>데이터는 국내에, 외부 AI는 쓰지 않음</h3>
+          <p>SaaS 데이터는 국내 리전에만 저장되고, 평가·안전장치용 AI도 플랫폼 내부 모델만 사용합니다. 폐쇄망이 필요하면 Community를 자체 설치합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5 PILLARS ===== -->
+    <section id="pillars" class="section">
+      <div class="section-head">
+        <span class="section-tag">Core Pillars</span>
+        <h2>플랫폼을 떠받치는 <span class="text-pink">5대 축</span></h2>
+        <p class="section-lead">관측 → 평가 → 최적화 → 통제 → 증빙. 다섯 단계가 하나의 기록으로 이어집니다.</p>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar neu-raised">
+          <div class="pillar-num neu-pressed">01</div>
+          <h3 class="pillar-title text-blue">관측 (Observe)</h3>
+          <div class="pillar-tags">
+            <span>실행 흐름 지도</span><span>시간표</span><span>실시간</span>
+          </div>
+          <p>여러 AI 에이전트가 무엇을 언제 호출했는지 한 장의 흐름도로 봅니다. 어디서 느려지고, 어디서 비용이 나가는지 바로 보입니다.</p>
+        </div>
+
+        <div class="pillar neu-raised">
+          <div class="pillar-num neu-pressed">02</div>
+          <h3 class="pillar-title text-pink">평가 (Evaluate)</h3>
+          <div class="pillar-tags">
+            <span>19개 지표</span><span>A/B 비교</span><span>통계 검정</span>
+          </div>
+          <p>정확성 · 사실 충실성 · 안전성 · 한국어 적절성 등 19개 지표로 점수를 매깁니다. 변경 전후 차이가 우연인지 진짜인지 통계로 판정합니다.</p>
+        </div>
+
+        <div class="pillar neu-raised">
+          <div class="pillar-num neu-pressed">03</div>
+          <h3 class="pillar-title text-blue">최적화 (Optimize)</h3>
+          <div class="pillar-tags">
+            <span>6종 자동 개선</span><span>비용 vs 품질</span>
+          </div>
+          <p>지시문을 자동으로 개선해 품질은 올리고 비용은 낮춥니다. 평가 결과가 다시 개선의 입력이 되는 순환 구조.</p>
+        </div>
+
+        <div class="pillar neu-raised">
+          <div class="pillar-num neu-pressed">04</div>
+          <h3 class="pillar-title text-pink">통제 (Guard)</h3>
+          <div class="pillar-tags">
+            <span>한국어 안전장치 8종</span><span>개인정보</span><span>이미지</span>
+          </div>
+          <p>주민번호 · 카드 · 계좌번호 등 개인정보 노출, 악의적 조작 시도, 비밀키 유출을 실시간 차단. 이미지 속 글자도 읽어 같은 규칙을 적용합니다.</p>
+        </div>
+
+        <div class="pillar neu-raised pillar-wide">
+          <div class="pillar-num neu-pressed">05</div>
+          <h3 class="pillar-title text-blue">증빙 (Prove)</h3>
+          <div class="pillar-tags">
+            <span>AI 기본법 §31 · §34</span><span>봉인 기록</span><span>증거 등급</span><span>월간 보고서</span><span>ISO 42001 · 27001</span>
+          </div>
+          <p>고지 · 공개 · 영향평가 · 결정 근거 · 이의제기를 한 화면에서 관리하고, 감사관 전용 화면에서 기록의 무결성을 검증합니다. 월간 준수 보고서와 제출용 증빙 묶음을 자동 생성합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== OBSERVABILITY DETAIL ===== -->
+    <section id="observability" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · Observability</span>
+        <h2><span class="text-blue">관측</span> — AI 안에서 무슨 일이 있었나</h2>
+      </div>
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📊</span><h4>Dashboards</h4></div>
+          <p>비용 · 응답 속도 · 오류 · 만족도 추이를 한눈에.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📋</span><h4>Logs · Traces</h4></div>
+          <p>모든 요청 기록을 실시간 목록으로. 프로젝트 · 모델별 검색.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🔬</span><h4>Trace Detail</h4></div>
+          <p>요청 하나의 단계별 시간표와 판단 근거. 입력의 어느 문장 · 문서가 답을 좌우했는지 <b>실제로 빼 보고 다시 실행해 측정</b>합니다.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">💬</span><h4>Threads View</h4></div>
+          <p>고객과의 대화 전체를 말풍선으로. 누적 비용과 평가 점수 표시.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🔗</span><h4>DAG Flow</h4></div>
+          <p>여러 에이전트의 분업 · 협업 흐름을 그래프로 실시간 관찰.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🌐</span><h4>End-to-End Flow</h4></div>
+          <p>수집 → 평가 → 안전장치 → 감사 기록까지 요청 하나의 전체 여정.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">💬</span><h4>도움말 챗봇</h4></div>
+          <p>모든 화면에서 사용법 · 용어 · 절차를 바로 답변. 100% 내부 AI. 답할 수 없는 질문을 거절할 때도 AI임을 밝힙니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DEVELOPMENT DETAIL ===== -->
+    <section id="development" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · Development</span>
+        <h2><span class="text-pink">개발</span> — 만들고 고치는 작업을 한 화면에서</h2>
+      </div>
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🤖</span><h4>Agent Playground</h4></div>
+          <p>여러 모델과 대화하며 비용을 추적하고 조작 시도를 미리 점검.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">✨</span><h4>Prompt Playground</h4></div>
+          <p>같은 지시문을 여러 모델에 동시에 보내 결과 · 비용 · 속도 비교.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">⚙</span><h4>Agent Configuration</h4></div>
+          <p>소스 코드를 스캔해 어떤 AI · 도구를 쓰는지 자동 파악. 실제 실행 기록과 대조.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧬</span><h4>Optimization Runs</h4></div>
+          <p>자동 개선 결과를 비교하고 마음에 드는 지시문을 한 번에 적용.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📝</span><h4>Prompts</h4></div>
+          <p>지시문 버전 관리와 변경 이력. 어떤 지시문이 어디서 파생됐는지 추적.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EVALUATION DETAIL ===== -->
+    <section id="evaluation" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · Evaluation</span>
+        <h2><span class="text-blue">평가</span> — 모든 결정의 근거</h2>
+      </div>
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">✅</span><h4>Test Suites</h4></div>
+          <p>배포 전 자동 시험. 통과율이 떨어지면 배포를 막습니다.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🗃</span><h4>Datasets</h4></div>
+          <p>시험용 질문·정답 묶음. 한 번 확정하면 바뀌지 않도록 지문(해시)을 남깁니다.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧪</span><h4>Experiments</h4></div>
+          <p>변경 전 · 후 A/B 비교. 차이가 우연인지 통계(p&lt;0.05)로 판정.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">👁</span><h4>Annotation Queues</h4></div>
+          <p>사람이 직접 답변을 검수하는 대기열. 이의제기 처리 창구로도 사용.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📐</span><h4>Metrics Catalog</h4></div>
+          <p>규칙 기반 9 · AI 심사 7 · 한국어 3 = <b>19개 지표</b>. 자체 지표 추가 가능.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRODUCTION DETAIL ===== -->
+    <section id="production" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · Production</span>
+        <h2><span class="text-pink">실시간 운영</span>의 안전선</h2>
+      </div>
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📡</span><h4>Online Evaluation</h4></div>
+          <p>실제 고객 응답을 실시간으로 채점. 기준 미달 시 즉시 알림.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🔔</span><h4>Alerts</h4></div>
+          <p>Slack · Telegram · 웹훅으로 전달. 응답 시간 약속(SLA) 위반 추적.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🛡</span><h4>Guardrails</h4></div>
+          <p>차단 · 수정 · 표시 규칙 관리. 각 규칙이 어느 법 조항에 대응하는지 표시.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DIAGNOSIS DETAIL (Workspace · Diagnosis · EE) ===== -->
+    <section id="diagnosis" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · Diagnosis · EE · Professional 이상</span>
+        <h2><span class="text-pink">Diagnosis</span> — AI 서비스 품질 진단</h2>
+        <p class="section-lead">
+          운영 중인 AI 서비스의 이름과 주소만 등록하고 <b>▶ 진단 실행</b>을 누르면, 시험 문항을 스스로 만들어 던지고
+          <b>품질 · 안전 · 컴플라이언스 · 성능</b> 4개 축 점수와 등급, 발견사항, 제출용 보고서까지 한 화면에서 내놓습니다.
+          대상 서비스의 소스 코드는 건드리지 않습니다.
+        </p>
+      </div>
+
+      <div class="law-banner neu-raised">
+        <div class="law-row">
+          <div class="law-cell">
+            <div class="law-tag">① 탐색</div>
+            <div class="law-desc">어떤 프레임워크 · 모델 · API · 도구(MCP · A2A)를 쓰는지 자동 파악, 접속 가능 여부 확인</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">② 계측</div>
+            <div class="law-desc">소스 수정 없이 붙일 수 있는 연결 코드 생성. 진단 호출은 모두 기록으로 남김</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">③ 테스트 생성</div>
+            <div class="law-desc">기능 · 안전 공격 · 도구별 공격 · 여러 턴 공격 · 사실 오류 · 고객 성공 기준 · 회귀 문항</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">④ 실행</div>
+            <div class="law-desc">문항을 대상에 던지고 채점. 시간 초과 문항은 한 건씩 다시 측정</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">⑤ 보고서</div>
+            <div class="law-desc">4축 스코어카드 · 발견사항 · 전회 대비 변화 · 서명된 보고서</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🎯</span><h4>진단 대상 등록 · 실행</h4></div>
+          <p>이름 · 주소 · 프레임워크 · 모델 · 업종을 넣어 등록합니다(프레임워크는 비워 두면 자동 식별). 대상 카드에서 바로 실행하고, 대상을 삭제해도 <b>진단 이력은 보존</b>됩니다.</p>
+          <div class="pillar-tags"><span>대상 카드</span><span>▶ 진단 실행</span><span>이력 보존</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">♻️</span><h4>모드 — 신규 생성 · 직전 세트 재사용</h4></div>
+          <p><b>신규 생성</b>은 문항을 새로 만들고, <b>재사용</b>은 직전과 똑같은 문항으로 다시 진단합니다. 문항 세트마다 지문(SHA-256)을 남겨, 개선 전후를 <b>같은 시험지</b>로 비교했음을 증명합니다.</p>
+          <div class="pillar-tags"><span>fresh · reuse</span><span>문항 세트 지문</span><span>시드 고정</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧨</span><h4>공격 팩 선택</h4></div>
+          <p><b>v1.0 15종</b>(지시 조작 · 개인정보 추출 · 비밀 유출 · 탈옥 · AI 고지 · 유해 표현)과 <b>v1.1 19종</b>(도구 오남용 · 문서에 숨긴 지시 · 과도한 자율 행동 · 여러 턴 우회 추가) 중 선택. v1.1은 공격마다 <b>OWASP LLM Top 10(2025)</b>과 AI 기본법 조항에 대응됩니다. 팩이 변조되면 실행을 거부합니다.</p>
+          <div class="pillar-tags"><span>v1.1 · 19종</span><span>OWASP 매핑</span><span>팩 지문 검증</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📶</span><h4>실행 모니터 · 취소</h4></div>
+          <p>5단계 진행 막대에 단계별 진행률(예: 12/40)을 표시하고, <b>■ 취소</b>를 누르면 현재 단계가 끝나는 지점에서 멈춥니다. 문항당 30초 · 전체 20분 제한, 동시 진단은 2건으로 묶어 대상 서비스에 무리를 주지 않습니다.</p>
+          <div class="pillar-tags"><span>단계별 진행률</span><span>중도 취소</span><span>과부하 방지</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧪</span><h4>모의(DEMO) 결과는 모의라고 표시</h4></div>
+          <p>주소가 없거나 접속되지 않으면 내부 AI가 대신 답한 <b>연습 실행</b>이 됩니다. 이때 화면과 보고서에 <b>DEMO / SIMULATED</b> 배너와 대리 응답 비율을 붙이고 "실서비스 판정에 사용 금지"를 명시합니다. 일부만 실패해도 그 비율만큼 신뢰도를 낮춰 표시합니다.</p>
+          <div class="pillar-tags"><span>LIVE · DEMO 구분</span><span>신뢰도 표시</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧮</span><h4>4축 스코어카드 · 등급</h4></div>
+          <p>품질 · 안전 · 컴플라이언스 · 성능 각 100점, <b>A(90↑) · B(80↑) · C(70↑) · D(60↑) · F</b>. 치명 결함이 1건이라도 있으면 종합 등급은 <b>D를 넘지 못하고</b>, 높음 2건 이상이면 C가 상한입니다. 금융 · 의료 업종은 안전과 컴플라이언스 비중을 높여 채점합니다.</p>
+          <div class="pillar-tags"><span>보수적 채점</span><span>업종별 가중</span><span>응답 속도 실측</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🚩</span><h4>발견사항 → 개선 지시문</h4></div>
+          <p>문제마다 심각도 · 내용 · 권고를 보여 주고 <b>🔗 원본 기록</b>으로 바로 이동합니다. <b>🔧 개선 프롬프트 생성</b>을 누르면 자동 개선 기능이 고친 지시문 후보를 만들고, 다시 진단해 <b>정말 나아졌는지 계보로 확인</b>합니다.</p>
+          <div class="pillar-tags"><span>증거 기록 링크</span><span>진단 → 개선 → 재진단</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📈</span><h4>이전 실행과 비교 · 추이</h4></div>
+          <p>직전 실행(또는 고른 실행)과 비교해 등급 변화, 축별 점수 ▲▼, <b>새로 생긴 문제와 해소된 문제 수</b>를 보여 줍니다. 회차별 종합 점수는 막대 추이로 표시합니다.</p>
+          <div class="pillar-tags"><span>실행 간 비교(diff)</span><span>추이 차트</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📄</span><h4>서명된 보고서 내려받기</h4></div>
+          <p><b>한국어 · English</b>, <b>MD · DOCX · PDF</b>. 모든 수치가 봉인된 원본 기록과 연결되고, <b>🔏 서명</b>(Ed25519) 파일을 함께 받아 제3자가 독립 검증 도구로 진위를 확인합니다. 영문 보고서는 EU AI Act 조항에 대응. 감독기관 · 감사인에게 그대로 제출합니다.</p>
+          <div class="pillar-tags"><span>한 · 영</span><span>전자서명 · 독립 검증</span><span>EU AI Act</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">⏰</span><h4>정기 진단 · 기준 미달 알림</h4></div>
+          <p>대상마다 주기(매일 · 매주 등)를 정해 두면 자동으로 진단합니다. 안전 점수나 치명 결함 수가 정한 기준을 벗어나면 <b>즉시 알림</b>을 보냅니다. 한 번의 점검이 아니라 <b>상시 점검</b>입니다.</p>
+          <div class="pillar-tags"><span>주기 실행</span><span>임계값 알림</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DIAGNOSIS PORTFOLIO — CONTROL TOWER (Enterprise) ===== -->
+    <section id="portfolio" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · Diagnosis · EE · Enterprise</span>
+        <h2><span class="text-blue">Diagnosis Portfolio</span> — Control Tower</h2>
+        <p class="section-lead">
+          회사가 운영하는 AI 서비스가 여러 개라면, 하나씩 열어 볼 수 없습니다. 포트폴리오는 <b>법인 단위 전 진단 대상</b>을 한 표에 모아
+          4축 점수 · 종합 등급 · 미해결 치명 결함 · 배포 게이트 · 마지막 진단 후 경과일을 보여 줍니다.
+          <b>어느 서비스가 위험하고, 어느 서비스를 오래 방치했는지</b> 한눈에 드러납니다.
+        </p>
+      </div>
+
+      <div class="pf neu-raised">
+        <div class="pf-caption">예시 화면 — 수치는 설명용이며 실제 고객 결과가 아닙니다</div>
+        <div class="pf-scroll">
+          <table class="pf-table">
+            <thead>
+              <tr>
+                <th>대상</th><th>도메인</th><th>종합</th>
+                <th class="c">품질</th><th class="c">안전</th><th class="c">컴플라이언스</th><th class="c">성능</th>
+                <th class="c">CRITICAL</th><th class="c">HIGH</th><th class="c">게이트</th><th class="c">미진단</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="pf-name">투자 상담 챗봇</td><td>금융</td><td class="pf-grade g-a">A</td>
+                <td class="c h-a">92.3</td><td class="c h-a">100</td><td class="c h-a">96.5</td><td class="c h-b">88.4</td>
+                <td class="c">0</td><td class="c">0</td><td class="c">✅</td><td class="c">3일</td>
+              </tr>
+              <tr>
+                <td class="pf-name">사내 문서 검색</td><td>general</td><td class="pf-grade g-b">B</td>
+                <td class="c h-b">84.6</td><td class="c h-a">94.7</td><td class="c h-a">91.2</td><td class="c h-c">73.1</td>
+                <td class="c">0</td><td class="c pf-high">1</td><td class="c">✅</td><td class="c">8일</td>
+              </tr>
+              <tr>
+                <td class="pf-name">주문 · 배송 에이전트</td><td>물류</td><td class="pf-grade g-d">D</td>
+                <td class="c h-a">100</td><td class="c h-f">53.3</td><td class="c h-c">72</td><td class="c h-a">100</td>
+                <td class="c pf-crit">2</td><td class="c pf-high">3</td><td class="c">⛔</td><td class="c">12일</td>
+              </tr>
+              <tr>
+                <td class="pf-name">고객센터 상담봇</td><td>판매</td><td class="pf-grade g-d">D</td>
+                <td class="c h-d">69.2</td><td class="c h-c">73.7</td><td class="c h-d">68.5</td><td class="c h-f">57.8</td>
+                <td class="c pf-crit">1</td><td class="c pf-high">4</td><td class="c">⛔</td><td class="c pf-crit">41일</td>
+              </tr>
+              <tr>
+                <td class="pf-name">신규 등록 서비스</td><td>general</td><td class="pf-grade">—</td>
+                <td class="c h-n">—</td><td class="c h-n">—</td><td class="c h-n">—</td><td class="c h-n">—</td>
+                <td class="c">0</td><td class="c">0</td><td class="c">—</td><td class="c pf-crit">미진단</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pf-legend">
+          <span><i class="h-a"></i>90점 이상</span><span><i class="h-b"></i>80점대</span><span><i class="h-c"></i>70점대</span>
+          <span><i class="h-d"></i>60점대</span><span><i class="h-f"></i>60점 미만</span><span><i class="h-n"></i>진단 전</span>
+        </div>
+      </div>
+
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🌡</span><h4>4축 히트맵</h4></div>
+          <p>품질 · 안전 · 컴플라이언스 · 성능 점수를 색으로 칠합니다. 숫자를 읽지 않아도 <b>붉은 칸이 어디에 몰려 있는지</b>로 약한 서비스와 약한 축이 보입니다.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🏷</span><h4>종합 등급 · 미해결 결함</h4></div>
+          <p>대상별 종합 등급(A~F)과 아직 해결하지 않은 <b>CRITICAL · HIGH</b> 건수를 나란히 둡니다. 점수가 좋아도 치명 결함이 남아 있으면 등급이 내려가므로 숫자에 가려지지 않습니다.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🚦</span><h4>배포 게이트 ✅ · ⛔</h4></div>
+          <p><b>미해결 치명 결함 0건 + 안전 90점 이상</b>이면 통과입니다. 같은 판정을 배포 파이프라인(CI)에서 스크립트 한 줄로 불러, 기준(기본: 안전 90 · 치명 0 · 종합 70)에 못 미치면 <b>배포를 막습니다</b>. 기준은 대상별로 조정하고, 판정 내역은 행위 감사에 남습니다.</p>
+          <div class="pillar-tags"><span>CI 연동</span><span>대상별 기준</span><span>판정 기록</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📅</span><h4>미진단 경과일</h4></div>
+          <p>마지막 진단 후 며칠이 지났는지 표시합니다. <b>30일을 넘기면 붉게 강조</b>하고, 한 번도 진단하지 않은 대상은 "미진단"으로 드러냅니다. 정기 진단을 걸어 두면 이 칸이 붉어지지 않습니다.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🗼</span><h4>경영진 · 감사 담당자의 한 장</h4></div>
+          <p>대상 이름을 누르면 해당 진단 화면으로 이동합니다. 조직별로 분리되어 <b>자기 법인의 대상만</b> 보이며, Compliance · Enterprise 에디션에서 제공합니다.</p>
+          <div class="pillar-tags"><span>법인 단위 뷰</span><span>조직 분리</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPLIANCE DETAIL ===== -->
+    <section id="compliance" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · Compliance</span>
+        <h2><span class="text-blue">제34조 고영향 AI 사업자 책무</span> — 4가지를 한 플랫폼으로</h2>
+        <p class="section-lead">
+          위험관리 · 결과 도출 기준 설명 · 이용자 보호 · 책임자 지정. 네 가지 의무의 증거가
+          서비스가 돌아가는 동안 <b>자동으로 쌓입니다</b>. 별도 문서 작업이 아니라 운영 그 자체가 증빙입니다.
+        </p>
+      </div>
+
+      <div class="law-banner neu-raised">
+        <div class="law-row">
+          <div class="law-cell">
+            <div class="law-tag">제34조 ① 위험관리체계</div>
+            <div class="law-desc">위험 항목 등록 → 안전장치 · 임계값 경보로 완화 → 대시보드로 상시 감시</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">제34조 ② 결과 도출 기준 설명 ★</div>
+            <div class="law-desc">요청마다 판단 근거 · 에이전트 선택 이유 · 병합 이유를 한국어로 기록, 봉인 보관. 기록마다 <b>사실 · AI의 증언 · 사후 실험</b> 등급 표시, 입력 기여는 실험으로 측정. 모델 카드 자동 생성</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">제34조 ③ 이용자 보호</div>
+            <div class="law-desc">개인정보 · 유해 표현 실시간 차단, 보호 조치를 공개 페이지에 자동 공시</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">제34조 ④ 책임자 지정 · 공시</div>
+            <div class="law-desc">관리 · 감독 책임자 등록 → 투명성 페이지 공시 → 변경 이력 보존</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">제31조 고지 · 표시</div>
+            <div class="law-desc">AI 사용 사실 사전 고지(3채널 점검표) · 생성물 표시 자동 삽입 · 위반 시 차단</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📜</span><h4>Transparency</h4></div>
+          <p>점검표 · 결정 근거 · 책임자 · 영향평가 · 공개 창구 · 위반 요약을 7개 탭으로.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🔍</span><h4>Auditor</h4></div>
+          <p>감사관 전용 화면. 조직별 기록 사슬의 지문 · 서명 · 연결을 다시 계산해 검증하고, 증거 등급과 함께 결정 근거를 PDF/DOCX로 내보내기. 같은 검증을 외부 스크립트로도 수행.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧠</span><h4>Ontology</h4></div>
+          <p>업무 지식 체계와 대조해 AI의 사실 오류(환각)를 사전에 잡아냅니다.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🏛</span><h4>ISO 42001 · AI 경영시스템</h4></div>
+          <p>영향평가 · 모델 카드 · 위험 등록부가 ISO 42001 요구항목에 대응. 인증 심사 증거로 재사용.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🔐</span><h4>ISO 27001 · ISMS-P</h4></div>
+          <p>접근 통제 · 행위 감사 · 보관 정책을 ISO 27001 · ISMS-P 통제 항목에 매핑한 보고서 자동 삽입.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🗑️</span><h4>동의 · 잊힐 권리</h4></div>
+          <p>동의 이력 관리와 삭제 요청 처리(개인정보보호법 §36). 지워도 증거 봉인은 유지.</p>
+        </div>
+      </div>
+
+      <div class="law-banner neu-raised">
+        <div class="law-row">
+          <div class="law-cell">
+            <div class="law-tag">주무부처 · 전담기관</div>
+            <div class="law-desc">과기정통부 · <a href="https://www.aisi.re.kr" target="_blank" rel="noopener">인공지능안전연구소(AISI)</a> · <a href="https://www.nia.or.kr" target="_blank" rel="noopener">한국지능정보사회진흥원(NIA)</a> — 사실조사 · 안전성 점검 시 진단 보고서 · 증빙 묶음 제출</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">PIPC 개인정보보호위원회</div>
+            <div class="law-desc">개인정보 차단 기록 · 동의 이력 · 삭제 처리 이력으로 개인정보보호법 대응</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">MOIS 행정안전부</div>
+            <div class="law-desc">공공기관 AI 도입 시 Community 자체 설치(폐쇄망) 또는 SaaS · 접근 통제 · 행위 감사</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">MCST 문화체육관광부</div>
+            <div class="law-desc">AI 생성물 표시 · 학습 데이터 출처(저작권) 항목을 모델 카드에 기록</div>
+          </div>
+          <div class="law-cell">
+            <div class="law-tag">금융 · 증권 · 물류 · 판매</div>
+            <div class="law-desc">신용 · 투자 · 추천 · 배송 판단을 내리는 AI의 근거를 고객과 감독기관에 설명</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPLAINABILITY INTEGRITY (2026.09) ===== -->
+    <section id="explain" class="section">
+      <div class="section-head">
+        <span class="section-tag">Explain · Audit Integrity · 2026.09</span>
+        <h2><span class="text-pink">설명의 정직성</span> — 추정이 아닌 측정, 자칭이 아닌 부여</h2>
+        <p class="section-lead">
+          봉인은 기록이 <b>바뀌지 않았음</b>을 보증할 뿐, 기록 내용이 <b>참임</b>을 보증하지 않습니다. 거짓 설명도 완벽하게 봉인될 수 있습니다.
+          그래서 WDLAB-LLMOps는 화면에 보이는 모든 설명이 <b>관측된 사실인지 · AI가 쓴 증언인지 · 사후 실험 결과인지</b> 스스로 밝히게 했고,
+          AI 내부를 들여다보는 <b>척하던</b> 그림은 걷어냈습니다.
+        </p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🔬</span><h4>입력 기여 실측</h4></div>
+          <p>질문의 문장 · 참고 문서를 <b>하나씩 빼고 같은 AI를 다시 실행</b>해 답이 얼마나 달라지는지 잽니다. 회로에 신호를 넣고 반응을 재던 방식 그대로입니다. 예: "코드명은 청룡이다"를 빼면 답이 "메모에 코드명이 없습니다"로 바뀌고, 무관한 문장은 빼도 글자 하나 변하지 않습니다.</p>
+          <div class="pillar-tags"><span>문장 · 어절 · 메시지 · 문서 단위</span><span>어떤 모델에서도 동작</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧩</span><h4>중복 근거까지 찾아냅니다</h4></div>
+          <p>같은 사실이 두 문서에 있으면 하나를 빼도 답이 유지되어 "기여 없음"으로 보이기 쉽습니다. 여러 문서를 무작위로 함께 빼 보는 실험을 모아 분석해, <b>서로 대신할 수 있는 근거</b>와 <b>함께 있어야만 하는 근거</b>를 구분합니다.</p>
+          <div class="pillar-tags"><span>중복 · 상보 판정</span><span>95% 신뢰구간</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📏</span><h4>모르면 모른다고 말합니다</h4></div>
+          <p>아무것도 빼지 않고 다시 실행했을 때의 흔들림(잡음 한계)을 함께 재고, 그 이하의 차이는 <b>기여로 주장하지 않습니다</b>. 분석 모형이 실제 반응을 설명하지 못하면 결과 전체에 "신뢰 불가"를 붙입니다. 측정 방법 · 한계 · 비용이 결과와 함께 기록됩니다.</p>
+          <div class="pillar-tags"><span>잡음 한계</span><span>충실도 검사</span><span>검증 실행</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🏷</span><h4>증거 등급 — 사실 · 증언 · 실험</h4></div>
+          <p>모든 감사 기록에 등급이 붙습니다. <b>사실 기록</b>(시스템이 직접 남긴 입출력 · 모델 · 설정), <b>AI의 증언</b>(AI가 쓴 이유 설명 — 바뀌지 않았음은 보증하지만 참인지는 미검증), <b>사후 실험</b>(기여 실측 결과), <b>사람의 진술</b>, <b>미분류</b>. 감사관은 사실과 증언을 혼동하지 않습니다.</p>
+          <div class="pillar-tags"><span>필드 단위 등급</span><span>등급도 서명 범위 안</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🛂</span><h4>등급과 서명은 서버가 부여</h4></div>
+          <p>외부 프로그램이 "이건 사실 기록"이라고 <b>자칭할 수 없습니다</b>. 플랫폼이 직접 실행을 지켜본 기록만 사실로 인정하고, 밖에서 보고된 기록은 "미분류 · 서버 미확인"으로 남깁니다. 서명과 기록 사슬 연결도 서버가 하며, 조직마다 사슬은 하나입니다. 다른 조직의 사슬에 끼워 넣으려는 시도는 거부됩니다.</p>
+          <div class="pillar-tags"><span>자칭 불가</span><span>조직당 사슬 하나</span><span>동시 기록에도 분기 없음</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧭</span><h4>보증 범위를 숨기지 않습니다</h4></div>
+          <p>서명 사슬은 <b>서명 열쇠가 없는 사람</b>의 위 · 변조를 잡아냅니다. 열쇠를 가진 내부자는 기록을 고치고 다시 서명할 수 있으므로, 매일 기록 요약을 <b>다른 사람이 보관하는 별도 열쇠</b>로 서명해 따로 봉인합니다(기업용). 오픈소스판은 요약을 내보내 조직 밖에 보관할 수 있습니다. 이 위협 모델을 표로 공개합니다.</p>
+          <div class="pillar-tags"><span>일일 외부 봉인</span><span>열쇠 분리</span><span>위협 모델 공개</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🌪</span><h4>장애에도 멈추지 않는 기록</h4></div>
+          <p>저장소나 캐시를 일부러 멈추는 시험에서, 수집은 <b>0.01초 만에 임시 보관으로 전환</b>되고 복구 후 빠짐없이 되살아납니다. 멈춘 저장소 때문에 요청이 매달려 있지 않고 즉시 안내 응답을 돌려줍니다.</p>
+          <div class="pillar-tags"><span>장애 주입 시험 32/32</span><span>무손실 복구</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ARCHITECTURE ===== -->
+    <section id="architecture" class="section">
+      <div class="section-head">
+        <span class="section-tag">System</span>
+        <h2><span class="text-pink">시스템</span> 아키텍처</h2>
+        <p class="section-lead">SaaS(Professional · Enterprise)와 Community 자체 설치가 같은 구조를 씁니다. 외부 AI 호출은 기본 차단.</p>
+      </div>
+
+      <div class="arch">
+        <div class="arch-layer neu-raised">
+          <div class="arch-layer-title">화면 (Frontend)</div>
+          <div class="arch-blocks">
+            <div class="arch-block">React + TypeScript</div>
+            <div class="arch-block">28 화면 · 26 메뉴</div>
+            <div class="arch-block">한국어 · 영어</div>
+            <div class="arch-block">실시간 갱신</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-layer neu-raised arch-accent-blue">
+          <div class="arch-layer-title">핵심 엔진 · Core (Apache-2.0 오픈소스)</div>
+          <div class="arch-blocks">
+            <div class="arch-block">기록 수집</div>
+            <div class="arch-block">평가 실행기</div>
+            <div class="arch-block">자동 개선 엔진</div>
+            <div class="arch-block">안전장치 + 이미지 검사</div>
+            <div class="arch-block">판단 근거 설명</div>
+            <div class="arch-block">준수 감사 기록</div>
+            <div class="arch-block">재실행 · 통계 검정</div>
+            <div class="arch-block">에이전트 조율기</div>
+            <div class="arch-block">삭제 요청 처리</div>
+            <div class="arch-block">응답 시간 감시</div>
+            <div class="arch-block">도움말 챗봇</div>
+            <div class="arch-block">무손실 버퍼</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-layer neu-raised arch-accent-pink">
+          <div class="arch-layer-title">ee/ 기업용 모듈 · 동적 로딩 (v2.0)</div>
+          <div class="arch-blocks">
+            <div class="arch-block">SSO (OIDC · SAML)</div>
+            <div class="arch-block">역할별 권한 (RBAC)</div>
+            <div class="arch-block">계정 자동 연동 (SCIM)</div>
+            <div class="arch-block">행위 감사</div>
+            <div class="arch-block">다중 조직</div>
+            <div class="arch-block">라이선스</div>
+            <div class="arch-block">품질 진단 엔진</div>
+            <div class="arch-block">AI 기본법 패키지</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-grid">
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-blue">ClickHouse</div>
+            <div class="arch-cell-sub">요청 기록 · 평가 · 안전장치 · 봉인 감사 기록</div>
+          </div>
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-pink">PostgreSQL</div>
+            <div class="arch-cell-sub">프로젝트 · 데이터셋 · 지시문 · AI 기본법 등록부</div>
+          </div>
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-blue">Redis</div>
+            <div class="arch-cell-sub">실시간 평가 · 요청 제한 · 알림</div>
+          </div>
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-pink">MinIO</div>
+            <div class="arch-cell-sub">백업 · 지식 체계 파일 · 모델 카드 · 증빙 묶음</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-layer neu-raised arch-accent-pink">
+          <div class="arch-layer-title">AI 실행 · 플랫폼 내부 모델 전용</div>
+          <div class="arch-blocks">
+            <div class="arch-block">Ollama (gemma3 · qwen3 · llama3.2)</div>
+            <div class="arch-block">vLLM</div>
+            <div class="arch-block">LiteLLM Proxy</div>
+            <div class="arch-block">외부 AI(gpt- · claude- · azure/) 호출 차단</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-layer neu-raised">
+          <div class="arch-layer-title">운영 · 배포</div>
+          <div class="arch-blocks">
+            <div class="arch-block">Prometheus</div>
+            <div class="arch-block">Grafana · 6 대시보드</div>
+            <div class="arch-block">OpenTelemetry</div>
+            <div class="arch-block">Helm (K8s 고가용성)</div>
+            <div class="arch-block">k6 부하 시험</div>
+          </div>
+        </div>
+
+        <div class="arch-layer neu-raised arch-accent-pink">
+          <div class="arch-layer-title">연결 도구 (SDK · IDE)</div>
+          <div class="arch-blocks">
+            <div class="arch-block">Python SDK</div>
+            <div class="arch-block">TypeScript SDK</div>
+            <div class="arch-block">Java SDK</div>
+            <div class="arch-block">VS Code 플러그인</div>
+            <div class="arch-block">JetBrains 플러그인</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PHASE UPGRADES (v1.4 · Phase 13~24) ===== -->
+    <section id="upgrades" class="section">
+      <div class="section-head">
+        <span class="section-tag">Platform Evolution · v1.4</span>
+        <h2><span class="text-pink">Phase 13~24</span> — 로드맵을 모두 구현</h2>
+        <p class="section-lead">
+          "예정"이었던 7개 항목이 전부 <b>핵심 기능으로 내장</b>되었습니다.
+        </p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🔁</span><h4>다시 실행 (Replay)</h4></div>
+          <p>과거 요청을 원본은 그대로 둔 채 같은 입력으로 다시 실행하고, 결과 · 비용 · 속도 차이를 자동 비교.</p>
+          <div class="pillar-tags"><span>재현성</span><span>차이 비교</span></div>
+        </div>
+
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📊</span><h4>통계적 A/B 판정</h4></div>
+          <p>변경 전후 점수 차이가 우연인지 진짜인지 통계로 판정(p&lt;0.05 · 95% 신뢰구간). 실제 시험에서 3개 지표 유의차 검출.</p>
+          <div class="pillar-tags"><span>Paired t-test</span><span>p &lt; 0.05</span></div>
+        </div>
+
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🖼️</span><h4>이미지 안전장치</h4></div>
+          <p>이미지 속 글자를 읽어 개인정보 규칙을 똑같이 적용. 3종 인식기 자동 대체.</p>
+          <div class="pillar-tags"><span>OCR</span><span>한국어 개인정보</span></div>
+        </div>
+
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🕸️</span><h4>분산 실행</h4></div>
+          <p>에이전트 작업을 여러 서버에 나눠 실행. 서버 장애 시 자동으로 로컬 처리로 전환.</p>
+          <div class="pillar-tags"><span>Redis Streams</span><span>60초 상태 확인</span></div>
+        </div>
+
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📦</span><h4>TS · Java SDK</h4></div>
+          <p>Python에 이어 TypeScript · Java 서비스도 코드 몇 줄로 연결. 추가 의존성 0.</p>
+          <div class="pillar-tags"><span>@wdlab/llmops</span><span>ai.wdlab:llmops</span></div>
+        </div>
+
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧩</span><h4>IDE 플러그인</h4></div>
+          <p>VS Code · JetBrains에서 기록 ID를 클릭하면 상세 화면으로 바로 이동.</p>
+          <div class="pillar-tags"><span>VS Code</span><span>JetBrains</span></div>
+        </div>
+
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🗑️</span><h4>잊힐 권리 (RTBF)</h4></div>
+          <p>삭제 요청 → 승인 → 처리 3단계. 개인정보는 지우되 증거 봉인은 깨지지 않습니다.</p>
+          <div class="pillar-tags"><span>개인정보보호법 §36</span><span>GDPR 17</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== v1.4.x OPS HARDENING (2026.07) ===== -->
+    <section id="ops14x" class="section">
+      <div class="section-head">
+        <span class="section-tag">Platform Evolution · v1.4.x · 2026.07</span>
+        <h2><span class="text-blue">운영 강화</span> — 신뢰성 · 재현성 · 접근성</h2>
+        <p class="section-lead">
+          v1.4.x 핵심은 <b>Apache-2.0으로 영구 공개</b>됩니다. 현장 요구를 반영한 6가지 강화.
+        </p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">💬</span><h4>전 화면 도움말 챗봇</h4></div>
+          <p>사용법 · 용어 · 절차를 100% 내부 AI가 답변. 첫 사용자의 진입 장벽을 낮춥니다.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">⏱</span><h4>응답 시간 감시</h4></div>
+          <p>단계별 허용 시간을 약속으로 정하고 위반 시 자동 경보. "늦은 정답은 오답".</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🎲</span><h4>결정성 경계 표시</h4></div>
+          <p>어디까지가 정해진 처리이고 어디부터 AI의 확률적 판단인지 자동 표시. 장애 분석의 출발점.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">📼</span><h4>재실행 조건 완결성</h4></div>
+          <p>모델 · 온도 · 시드 등 재실행에 필요한 조건을 모두 기록하고 완결성 점수로 표시.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🗄</span><h4>스키마 변경 정식화</h4></div>
+          <p>모든 저장 구조 변경을 버전 파일로만 관리(PG V029 · CH V008). 수동 변경 사고 차단.</p>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🛟</span><h4>무손실 수집</h4></div>
+          <p>저장소 장애 중에도 기록을 디스크에 임시 보관 후 자동 재적재. 증거 유실 0을 지향.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== v2.0 OPEN CORE · DIAGNOSIS · EE (Phase 21~30) ===== -->
+    <section id="enterprise" class="section">
+      <div class="section-head">
+        <span class="section-tag">Diagnosis · EE · v2.0 · Phase 21~39 · 2026.09</span>
+        <h2><span class="text-pink">AI 서비스 품질 진단</span> + 기업용 거버넌스 (Phase 21~39 구현 완료)</h2>
+        <p class="section-lead">
+          핵심은 오픈소스(Community)로, 규제 대응과 조직 관리 기능은 <code>ee/</code> 모듈로 SaaS에서 과금 제공합니다.
+          아래 기능은 모두 <b>구현·검증 완료</b>(자동 시험 539건 통과, API 231개)이며 <b>진단 → 보고서 → 증빙 제출</b>이 한 흐름으로 이어집니다.
+        </p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🩺</span><h4>AI 서비스 품질 진단 · 포트폴리오</h4></div>
+          <p><b>5단계 자동 진단</b> · 안전 공격 19종 · 4축 스코어카드(A~F) · 전자서명 보고서 · 진단 → 개선 → 재진단, 그리고 법인 전체를 한 표로 보는 <b>Control Tower</b>. 화면별 설명은 <a href="#diagnosis"><b>Diagnosis</b></a> · <a href="#portfolio"><b>Portfolio</b></a> 섹션에 있습니다.</p>
+          <div class="pillar-tags"><span>Diagnosis · Professional 이상</span><span>Portfolio · Enterprise</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">⚖️</span><h4>AI 기본법 패키지</h4></div>
+          <p>고영향 AI 해당 여부 판별 → 영향평가 초안 자동 작성(7항목, 실제 운영 데이터로 채움) → 작성자와 다른 사람이 승인 → 월간 보고서 자동 생성·알림 → <b>5년 봉인 보관</b>(오브젝트 락) → 제출용 증빙 묶음(ZIP) 다운로드. 계도기간 종료 카운트다운과 의무 이행률을 전용 화면에서 확인.</p>
+          <div class="pillar-tags"><span>전용 화면</span><span>영향평가 자동 초안</span><span>증빙 ZIP</span><span>이행률</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🔐</span><h4>기업 로그인 (SSO)</h4></div>
+          <p>회사 계정으로 로그인(OIDC · SAML). 로그인 응답의 서명을 검증하고 재사용 공격을 차단. 폐쇄망 Keycloak · AD FS 지원.</p>
+          <div class="pillar-tags"><span>OIDC</span><span>SAML 2.0</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧑‍⚖️</span><h4>역할별 권한 · 계정 자동 연동</h4></div>
+          <p>5개 역할 × 12개 자원 × 4개 행위 권한표를 모든 기능에 강제(감사 역할은 읽기만). 인사 시스템과 계정 · 그룹 자동 동기화(SCIM 2.0), 퇴사 시 즉시 접근 차단.</p>
+          <div class="pillar-tags"><span>RBAC</span><span>SCIM 2.0</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🧾</span><h4>사용자 행위 감사</h4></div>
+          <p>누가 언제 로그인 · 권한 변경 · 개인정보 열람 · 내보내기를 했는지 지울 수 없게 기록하고 매일 자동 봉인. 외부 검증 스크립트로 제3자가 무결성 확인 가능. <b>AI 결정 근거 기록의 하루치 요약도 여기에 함께 봉인</b>하고 별도 열쇠(Ed25519)로 서명해, 서명 열쇠를 가진 내부자가 기록을 고쳐 다시 서명해도 드러나게 합니다. ISO 27001 접근 통제 증거.</p>
+          <div class="pillar-tags"><span>덧붙이기 전용</span><span>일 단위 봉인</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🏢</span><h4>다중 조직 · 고가용성</h4></div>
+          <p>조직 → 워크스페이스 → 프로젝트 3계층 분리를 저장소 수준에서 강제(행 단위 접근 제어). 조직별 요청 한도 · 보관 기간, 정지 · 삭제(개인정보 파기) 관리. K8s 고가용성(Helm) · 부하 시험 도구.</p>
+          <div class="pillar-tags"><span>조직 분리</span><span>Helm · k6</span></div>
+        </div>
+        <div class="feat-card neu-raised">
+          <div class="feat-head"><span class="feat-icon neu-pressed">🎫</span><h4>오프라인 라이선스</h4></div>
+          <p>인터넷 연결 없이 동작하는 서명 키(발급 도구 포함). 사용량을 본사로 보내지 않습니다. 만료 후 14일 유예, SaaS는 구독 상태(체험 → 정식 → 연체 → 해지)와 청구서로 관리.</p>
+          <div class="pillar-tags"><span>No Phone-Home</span><span>좌석 무제한</span><span>구독 · 청구서</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRICING / EDITIONS ===== -->
+    <section id="pricing" class="section">
+      <div class="section-head">
+        <span class="section-tag">Editions · Pricing</span>
+        <h2><span class="text-blue">3 에디션</span> — 누구를 위한 서비스인가</h2>
+        <p class="section-lead">
+          <b>Community</b>는 개발자 · 운영자를 위한 무료 오픈코어, <b>Professional · Compliance/Enterprise</b>는
+          기업의 의사결정자와 법무 · 감사 담당자가 자사 AI 서비스에 쓰는 유료 SaaS(EE)입니다. 사용자 수 과금 없음.
+        </p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="price-card neu-raised">
+          <div class="price-tier">Community · 오픈코어</div>
+          <div class="price-value text-blue">무료</div>
+          <div class="price-license">Apache-2.0 · 자체 설치</div>
+          <ul class="price-feats">
+            <li><b>AI · 백엔드 개발자</b> — 내 에이전트 · LLM 앱에 계측을 붙이고 기록을 분석</li>
+            <li><b>MLOps · 플랫폼 운영자</b> — 인프라 기동, 대시보드 · 알림 · 백업 운영</li>
+            <li>기록 수집 · 흐름도 · 대시보드</li>
+            <li>평가 지표 19종 · 자동 개선 6종</li>
+            <li>A/B 통계 판정</li>
+            <li>47개 프레임워크 연결 · Playground</li>
+            <li>Python · TS · Java SDK + IDE 플러그인</li>
+            <li>폐쇄망 · 100% 내부 AI</li>
+          </ul>
+        </div>
+        <div class="price-card neu-raised price-featured">
+          <div class="price-tier">Professional · EE</div>
+          <div class="price-value text-pink">연 1,200만원</div>
+          <div class="price-license">SMB · 워크스페이스 단위 · SaaS</div>
+          <ul class="price-feats">
+            <li><b>프로덕트 매니저(PM/PO)</b> — 실험 결과 · 비용 · 품질 추이를 의사결정에 활용</li>
+            <li><b>법무 · 감사 · 컴플라이언스</b> — AI 기본법 · 개인정보보호법 증빙 확보</li>
+            <li>Community 전체 포함</li>
+            <li>한국어 안전장치 8종 (이미지 포함)</li>
+            <li>사실 오류(환각) 검증</li>
+            <li>역할별 권한 · 기업 로그인(SSO)</li>
+            <li>실시간 평가 · 품질 진단(Diagnosis) · 서명 보고서</li>
+            <li>업무시간 기술지원</li>
+          </ul>
+        </div>
+        <div class="price-card neu-raised">
+          <div class="price-tier">Compliance · Enterprise · EE</div>
+          <div class="price-value text-blue">연 3,600만원~</div>
+          <div class="price-license">중견 · 대기업 · 법인 단위 · SaaS</div>
+          <ul class="price-feats">
+            <li><b>PM/PO + 법무 · 감사 · 컴플라이언스</b> — 전사 AI 서비스의 증빙 확보 · 검증</li>
+            <li>Professional 전체 포함</li>
+            <li>봉인 감사 기록 · 위변조 탐지</li>
+            <li>AI 기본법 9개 조항 대응 · 월간 보고서 자동화</li>
+            <li>영향평가 7항목 + 고영향 판별 · 증빙 ZIP</li>
+            <li>진단 포트폴리오(Control Tower) — 법인 전체 대상 한눈에</li>
+            <li>계정 자동 연동 · 행위 감사 · 잊힐 권리</li>
+            <li>ISO 42001 · 27001 · ISMS-P 매핑 · 전용 구축 옵션 · 규제 자문</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pricing-note">※ Professional · Enterprise는 SaaS 구독(14일 체험 → 연 정액)으로 과금됩니다. 가격은 파일럿 실측 후 2027년 초 확정 예정인 초안이며 구축 · 유지보수 · 규제 자문은 별도 견적. 과태료 상한 3,000만원과 비교해 보십시오.</p>
+    </section>
+
+    <!-- ===== DIFFERENTIATORS ===== -->
+    <section id="diff" class="section">
+      <div class="section-head">
+        <span class="section-tag">Comparison</span>
+        <h2>왜 <span class="text-blue">글로벌 LLMOps 9종 · Dataiku · LRQA</span>가 아니라 <span class="text-pink">WDLAB-LLMOps</span> 인가</h2>
+        <p class="section-lead">
+          Opik · Langfuse · Galileo · Phoenix · Braintrust · Datadog · MLflow · Fiddler · Weave 등 글로벌 제품은 모두 SaaS로 서비스합니다.
+          셀프 테스트를 갖춘 <b>Dataiku</b>(Gartner AI 플랫폼 리더)도 SaaS이지만 고가·복잡하고 한국 규제에 대응하지 않습니다.
+          <b>LRQA</b>는 ISO 42001 공인 인증서를 발급하는 사람 주도 심사 기관으로, 소프트웨어가 아니라 WDLAB의 <b>보완 파트너</b>입니다
+          (WDLAB이 증빙을 자동 생성 → LRQA가 심사·인증). WDLAB-LLMOps는 같은 SaaS 방식에 <b>한국 AI 기본법 대응을 유일하게 내장</b>했습니다.
+        </p>
+      </div>
+
+      <div class="compare neu-raised">
+        <div class="compare-row compare-head">
+          <div>차원</div>
+          <div>WDLAB-LLMOps (SaaS)</div>
+          <div>글로벌 9종 · Dataiku · LRQA</div>
+        </div>
+        <div class="compare-row">
+          <div>서비스 방식</div>
+          <div class="hi">SaaS + Community 오픈코어 자체 설치</div>
+          <div class="lo">SaaS (Datadog은 SaaS 전용) · Dataiku SaaS+자체 설치 · LRQA는 사람 주도 심사 용역</div>
+        </div>
+        <div class="compare-row">
+          <div>공인 인증서 발급</div>
+          <div class="hi">불가 — 대신 인증 심사에 쓰는 증빙 · 통제 매핑을 자동 생성</div>
+          <div class="lo">LRQA만 가능 (ISO 42001 · 27001 공인 심사) · 9종 · Dataiku 불가</div>
+        </div>
+        <div class="compare-row">
+          <div>감사 · 보증 방식</div>
+          <div class="hi">상시 · 자동 · 재현 가능한 진단과 봉인 기록</div>
+          <div class="lo">LRQA는 비정기 · 수기 심사보고서 · Dataiku는 거버넌스 리포트</div>
+        </div>
+        <div class="compare-row">
+          <div>AI 기본법 대응</div>
+          <div class="hi">제31조 · 제34조 직접 매핑 · 월간 보고서 · 증빙 ZIP</div>
+          <div class="lo">9종 · Dataiku 모두 없음 · LRQA는 자문·심사(도구 없음)</div>
+        </div>
+        <div class="compare-row">
+          <div>결과 도출 기준 설명 (§34②)</div>
+          <div class="hi">요청마다 한국어 판단 근거 기록 · 5단계 설명</div>
+          <div class="lo">없음</div>
+        </div>
+        <div class="compare-row">
+          <div>ISO 42001 · 27001 · ISMS-P</div>
+          <div class="hi">통제 항목 매핑 보고서를 도구가 자동 생성</div>
+          <div class="lo">SOC2 중심 · Dataiku 부분 지원 · LRQA는 인증 주체</div>
+        </div>
+        <div class="compare-row">
+          <div>AI 서비스 품질 진단 (셀프 테스트)</div>
+          <div class="hi">5단계 자동 진단 · 4축 점수 · 봉인 기록 연동 보고서 · 법인 단위 Control Tower · 배포 게이트</div>
+          <div class="lo">Dataiku만 셀프 테스트 보유(범용 ML) · 9종은 없음 · LRQA는 사람이 평가</div>
+        </div>
+        <div class="compare-row">
+          <div>데이터 위치</div>
+          <div class="hi">국내 리전 상주 · 외부 AI 차단 · 폐쇄망은 Community</div>
+          <div class="lo">해외 리전 중심 (US · EU · JP)</div>
+        </div>
+        <div class="compare-row">
+          <div>한국어 안전장치</div>
+          <div class="hi">8종 · 주민번호 · 카드 · 계좌 등 + 이미지</div>
+          <div class="lo">미지원 또는 영어 일부</div>
+        </div>
+        <div class="compare-row">
+          <div>증거 무결성</div>
+          <div class="hi">덧붙이기 전용 + 서버 서명 사슬 + 일일 외부 봉인 · 보증 범위 공개</div>
+          <div class="lo">일반 로그</div>
+        </div>
+        <div class="compare-row">
+          <div>"왜 이 답인가" 설명 방식</div>
+          <div class="hi">입력을 실제로 빼 보는 실험으로 측정 · 잡음 한계 표시 · 사실/증언/실험 등급 구분</div>
+          <div class="lo">요청 기록 · 평가 점수 중심 (입력 기여 실측 · 증거 등급 없음)</div>
+        </div>
+        <div class="compare-row">
+          <div>기업용 계정 관리</div>
+          <div class="hi">SSO · 역할 권한 · 계정 연동 — 폐쇄망 지원</div>
+          <div class="lo">클라우드 계정 중심 · 유료 SaaS 전용</div>
+        </div>
+        <div class="compare-row">
+          <div>A/B 통계 판정</div>
+          <div class="hi">내장 (p-value · 신뢰구간)</div>
+          <div class="lo">단순 평균 차이</div>
+        </div>
+        <div class="compare-row">
+          <div>가격 · 대상</div>
+          <div class="hi">무료 ~ 연 3,600만원~ 3 에디션 · 사용자 무제한 · SMB부터 진입</div>
+          <div class="lo">9종 사용량·사용자 과금 · Dataiku 고가 연간 계약(대기업) · LRQA 용역 과금</div>
+        </div>
+        <div class="compare-row">
+          <div>범용 데이터과학 · AutoML</div>
+          <div class="lo" style="color:var(--text-3)">미지원 — LLM · 에이전트 서비스 운영에 집중</div>
+          <div class="hi">Dataiku 강점 (데이터 준비 · ML 파이프라인 · BI)</div>
+        </div>
+        <div class="compare-row">
+          <div>잊힐 권리</div>
+          <div class="hi">승인 워크플로 · 증거 봉인 유지</div>
+          <div class="lo">수동 삭제 또는 미지원</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ROADMAP ===== -->
+    <section id="roadmap" class="section">
+      <div class="section-head">
+        <span class="section-tag">Roadmap</span>
+        <h2>버전 <span class="text-pink">진화의 단계</span></h2>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">v1.0.0</div>
+          <h4>정식 출시</h4>
+          <p>22개 화면 · 73 API · 117 시험 통과</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">v1.2.0</div>
+          <h4>시각화 · 설명 계층</h4>
+          <p>시간표 · 비용-품질 곡선 · 봉인 기록 뷰어</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">v1.3.1</div>
+          <h4>자동 연결</h4>
+          <p>폴더 스캔만으로 기존 서비스 자동 계측</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">v1.4 · Phase 13~24</div>
+          <h4>로드맵 전면 구현</h4>
+          <p>다시 실행 · A/B 통계 · 이미지 안전장치 · 분산 실행 · TS/Java SDK · IDE · 잊힐 권리</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">v1.4.x · 2026.07</div>
+          <h4>운영 강화 · Apache-2.0 영구 공개</h4>
+          <p>도움말 챗봇 · 응답 시간 감시 · 결정성 경계 · 무손실 수집</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">v2.0 · Phase 21~30 · 2026.08</div>
+          <h4>Open Core · 진단 · AI 기본법 패키지</h4>
+          <p>SSO(서명 검증) · 권한 전면 강제 · 계정 자동 연동 · 행위 감사 자동 봉인 · 다중 조직(행 단위 격리) · 오프라인 라이선스 · 구독 · 품질 진단 엔진 v2 · 영향평가 · 증빙 ZIP · 전용 화면 — 자동 시험 424건</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">v2.0 · Phase 37~39 · 2026.09.01</div>
+          <h4>진단 심화</h4>
+          <p>에이전트 특화 안전 공격(19종) · 보고서 전자서명과 독립 검증 · 진단→개선→재진단 닫힌 루프 · 여러 턴 시나리오 · MCP/A2A 탐색 · 영문 보고서 + EU AI Act</p>
+        </div>
+        <div class="tl-item neu-raised pulse-card">
+          <div class="tl-tag tl-current">v2.0 · 2026.09.20 · 설명 · 감사 신뢰성 강화</div>
+          <h4>추정이 아닌 측정 · 자칭이 아닌 부여</h4>
+          <p>근사 주의(attention) 그림 폐기 → 입력을 빼 보고 재실행하는 <b>기여 실측</b>(중복 근거까지) · 기록마다 <b>증거 등급</b> · 등급과 서명은 <b>서버가 부여</b> · 조직당 기록 사슬 하나 · 일일 외부 봉인 · 보증 범위 공개 · 저장소 장애에도 멈추지 않는 수집</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">2027.01.22</div>
+          <h4>AI 기본법 계도기간 종료</h4>
+          <p>고영향 AI 사업자 사실조사 · 과태료 본격화 — 그 전에 준비를 마칩니다</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SYSTEM / SETTINGS ===== -->
+    <section id="system" class="section">
+      <div class="section-head">
+        <span class="section-tag">Workspace · System</span>
+        <h2><span class="text-blue">Settings</span> · 운영 설정</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card neu-raised">
+          <h3>API Key 관리</h3>
+          <p>프로젝트별 키 발급 · 회수, 접속 IP 제한, 만료 정책.</p>
+        </div>
+        <div class="card neu-raised">
+          <h3>에디션 · 라이선스</h3>
+          <p>현재 에디션과 활성 기능, 라이선스 만료일 확인.</p>
+        </div>
+        <div class="card neu-raised">
+          <h3>모델 등록</h3>
+          <p>내부 AI 모델 등록, 외부 AI 차단 정책, 예외 승인 이력.</p>
+        </div>
+        <div class="card neu-raised">
+          <h3>SDK · IDE</h3>
+          <p>Python · TypeScript · Java 연결 코드와 IDE 플러그인 안내.</p>
+        </div>
+        <div class="card neu-raised">
+          <h3>분산 실행 서버</h3>
+          <p>작업 서버 등록 · 상태 · 용량 확인, 실행 모드 전환.</p>
+        </div>
+        <div class="card neu-raised">
+          <h3>삭제 요청 관리</h3>
+          <p>잊힐 권리 요청의 승인 · 처리 이력과 무결성 확인.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer neu-pressed">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="brand-logo neu-raised small">
+            <span class="led led-blue"></span>
+            <span class="led led-pink"></span>
+          </div>
+          <div>
+            <div class="brand-title">WDLAB-LLMOps</div>
+            <div class="brand-subtitle">SaaS · Open Core · 관측 · 평가 · 최적화 · 통제 · 증빙</div>
+          </div>
+        </div>
+        <div class="footer-meta">
+          <div>v2.0 · Phase 21~39 · 설명·감사 신뢰성 강화 · 2026.09.20</div>
+          <div>© WDLAB · AI 기본법 계도기간 종료(2027.01.22) 대비</div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <button id="toTop" class="to-top neu-raised" aria-label="Top">▲</button>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
